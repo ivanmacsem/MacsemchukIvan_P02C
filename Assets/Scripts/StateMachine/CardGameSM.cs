@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardGameSM : MonoBehaviour
+public class CardGameSM : StateMachine
 {
+    [SerializeField] InputController _input;
+    public InputController Input => _input;
     void Start()
     {
-        //starting State here
+        ChangeState<SetupCardGameState>();
     }
 }
