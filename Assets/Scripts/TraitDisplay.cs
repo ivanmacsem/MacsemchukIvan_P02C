@@ -8,6 +8,7 @@ public class TraitDisplay : MonoBehaviour
     public Trait trait;
 
     private Image icon;
+    public Text traitTxt;
     public List<Sprite> traitIcons = new List<Sprite>();
     private string[] traitList = new string[] {"Rush", "Shield", "Spray", "Banish", "Callback", "Ranged", "Double Strike", "Taunt"};
 
@@ -24,5 +25,6 @@ public class TraitDisplay : MonoBehaviour
         }
         icon.sprite = traitIcons[idx];
         icon.gameObject.SetActive(true);
+        traitTxt.text = trait.name;
     }
 }
