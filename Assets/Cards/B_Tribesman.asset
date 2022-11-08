@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc2a8c9721493b449bb31f007df1405, type: 3}
+  m_Name: B_Tribesman
+  m_EditorClassIdentifier: 
+  name: Tribesman
+  tribeIcon: {fileID: 0}
+  color: {r: 0.27450982, g: 0.3647059, b: 0.65882355, a: 0}
+  traits: []
+  cost: 1
+  attack: 2
+  health: 1
