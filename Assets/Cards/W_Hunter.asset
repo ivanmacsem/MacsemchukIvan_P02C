@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hunter
   tribeIcon: {fileID: 0}
-  color: {r: 0.9725491, g: 0.9725491, b: 0.9725491, a: 0}
+  color: {r: 0.9725491, g: 0.9725491, b: 0.9725491, a: 0.99607843}
   traits:
   - {fileID: 11400000, guid: 8ba87bb56fee8024b83b0e35c989a5a7, type: 2}
   - {fileID: 11400000, guid: 01a149d62665ae646b162e3bed9a9d96, type: 2}
   cost: 6
-  attack: 2
+  power: 2
   health: 3

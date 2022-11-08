@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hero
   tribeIcon: {fileID: 0}
-  color: {r: 0.8980393, g: 0.30980393, b: 0.28627452, a: 0}
+  color: {r: 0.8980393, g: 0.30980393, b: 0.28627452, a: 1}
   traits:
   - {fileID: 11400000, guid: d937a07c1260a394b9a57c82eae0bc62, type: 2}
   cost: 7
-  attack: 5
-  health: 4
+  power: 3
+  health: 5

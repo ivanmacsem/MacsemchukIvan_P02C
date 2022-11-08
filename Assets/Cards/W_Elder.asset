@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Elder
   tribeIcon: {fileID: 0}
-  color: {r: 0.93725497, g: 0.93725497, b: 0.93725497, a: 0}
+  color: {r: 0.93725497, g: 0.93725497, b: 0.93725497, a: 1}
   traits:
   - {fileID: 11400000, guid: 7782c8b15c6b6ed4bb87b7cd508f3d8c, type: 2}
   cost: 4
-  attack: 2
+  power: 2
   health: 3

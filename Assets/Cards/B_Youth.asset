@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Youth
   tribeIcon: {fileID: 0}
-  color: {r: 0.27450982, g: 0.3647059, b: 0.65882355, a: 0}
+  color: {r: 0.27450982, g: 0.3647059, b: 0.65882355, a: 1}
   traits:
   - {fileID: 11400000, guid: 8ba87bb56fee8024b83b0e35c989a5a7, type: 2}
   cost: 2
-  attack: 2
+  power: 3
   health: 1

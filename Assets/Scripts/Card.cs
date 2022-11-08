@@ -12,7 +12,7 @@ public class Card : ScriptableObject
     public List<Trait> traits = new List<Trait>();
 
     public int cost;
-    public int attack;
+    public int power;
     public int health;
 
 }

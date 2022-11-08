@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Buffoon
   tribeIcon: {fileID: 0}
-  color: {r: 0.27450982, g: 0.3647059, b: 0.65882355, a: 0}
+  color: {r: 0.27450982, g: 0.3647059, b: 0.65882355, a: 1}
   traits:
   - {fileID: 11400000, guid: 4fc863dc0df4eb544a9844d08ec86857, type: 2}
   cost: 6
-  attack: 1
+  power: 1
   health: 8

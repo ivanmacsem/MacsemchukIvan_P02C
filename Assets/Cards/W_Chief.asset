@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Chief
   tribeIcon: {fileID: 0}
-  color: {r: 0.9725491, g: 0.9725491, b: 0.9725491, a: 0}
+  color: {r: 0.9725491, g: 0.9725491, b: 0.9725491, a: 1}
   traits:
   - {fileID: 11400000, guid: daa5c09b8d3d7e948b1ebe2293c46362, type: 2}
   cost: 5
-  attack: 1
+  power: 1
   health: 3

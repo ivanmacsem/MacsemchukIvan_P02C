@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tribesman
   tribeIcon: {fileID: 0}
-  color: {r: 0.9725491, g: 0.9725491, b: 0.9725491, a: 0}
+  color: {r: 0.9725491, g: 0.9725491, b: 0.9725491, a: 1}
   traits: []
   cost: 1
-  attack: 2
+  power: 2
   health: 1
