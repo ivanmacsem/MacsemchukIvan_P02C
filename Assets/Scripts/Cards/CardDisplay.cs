@@ -41,11 +41,21 @@ public class CardDisplay : MonoBehaviour
     }
     void OnEnable(){
         EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnd;
+        EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnBegin;
     }
     void OnDisable(){
         EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnEnd;
+        EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnBegin;
     }
     void OnEnemyTurnEnd(){
+        if(inSlot){
+            canAttack = true;
+            if(card.dblStrike){
+                canDblAttack = true;
+            }
+        }
+    }
+    void OnEnemyTurnBegin(){
         if(inSlot){
             canAttack = true;
             if(card.dblStrike){

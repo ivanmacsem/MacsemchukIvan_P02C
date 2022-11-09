@@ -9,11 +9,15 @@ public class CardsManager : MonoBehaviour
     public List<Card> playerDeck = new List<Card>();
     public List<Card> enemyDeck = new List<Card>();
     public List<Slot> playerSlots = new List<Slot>();
-    public Transform[] enemySlots;
+    public List<Slot> enemySlots = new List<Slot>();
+    public List<CardDisplay> enemyHand = new List<CardDisplay>();
+    public List<CardDisplay> enemyCardsInSlots = new List<CardDisplay>();
 
     public CardDisplay cardPrefab;
 
     public HorizontalLayoutGroup playerHand;
+
+    public HorizontalLayoutGroup enemyHandTransform;
     public bool[] availablePlayerSlots;
     public bool[] availableEnemySlots;
 
@@ -36,13 +40,18 @@ public class CardsManager : MonoBehaviour
             playerDeck.Remove(randCard);
         }
     }
-
-    public bool Dropped(Slot s){
-        if(availablePlayerSlots[playerSlots.IndexOf(s)]){
-            availablePlayerSlots[playerSlots.IndexOf(s)] = false;
-            return true;
+    public void EnemyDrawCard(){
+        if(enemyDeck.Count >= 1){
+            Card randCard = enemyDeck[Random.Range(0, enemyDeck.Count)];
+            cardPrefab.card = randCard;
+            GameObject newCard = Instantiate(cardPrefab.gameObject, enemyHandTransform.transform);
+            enemyDeck.Remove(randCard);
+            enemyHand.Add(newCard.GetComponent<CardDisplay>());
         }
-        return false;
+    }
+
+    public bool EmptySlot(Slot s){
+        return (availablePlayerSlots[playerSlots.IndexOf(s)]);
     }
 
     public void CreateDecks(int player, int enemy){

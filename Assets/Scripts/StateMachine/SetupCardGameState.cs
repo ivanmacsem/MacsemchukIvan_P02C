@@ -7,7 +7,13 @@ public class SetupCardGameState : CardGameState
     bool _activated = false;
 
     public override void Enter(){
-        StateMachine.CardsManager.CreateDecks(0, 1);
+        StateMachine.CardsManager.CreateDecks(0, 2);
+        StateMachine.CardsManager.PlayerDrawCard();
+        StateMachine.CardsManager.PlayerDrawCard();
+        StateMachine.CardsManager.PlayerDrawCard();
+        StateMachine.CardsManager.EnemyDrawCard();
+        StateMachine.CardsManager.EnemyDrawCard();
+        StateMachine.CardsManager.EnemyDrawCard();
         _activated = false;
     }
 
