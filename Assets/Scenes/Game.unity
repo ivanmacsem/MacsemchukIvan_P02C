@@ -737,6 +737,7 @@ GameObject:
   - component: {fileID: 416874638}
   - component: {fileID: 416874640}
   - component: {fileID: 416874639}
+  - component: {fileID: 416874641}
   m_Layer: 5
   m_Name: AIBase
   m_TagString: Untagged
@@ -804,6 +805,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416874637}
   m_CullTransparentMesh: 1
+--- !u!114 &416874641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416874637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356dfba022a021e41823852f5736fc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.8584906, g: 0.1822268, b: 0.18676521, a: 1}
+  healthTxt: {fileID: 1782998841}
+  interactable: 0
+  dmg: 0
 --- !u!1 &510451185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTurnTextUI: {fileID: 54888431}
   _playerTurnUI: {fileID: 1314292499}
+  _enemyBase: {fileID: 416874641}
 --- !u!114 &1565859209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2443,6 +2461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseDuration: 1.5
+  _playerBase: {fileID: 2000221887}
 --- !u!1 &1582645623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2474,7 @@ GameObject:
   - component: {fileID: 1582645626}
   - component: {fileID: 1582645625}
   m_Layer: 5
-  m_Name: EnemyHealth
+  m_Name: PlayerHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2908,6 +2927,7 @@ GameObject:
   - component: {fileID: 2000221884}
   - component: {fileID: 2000221886}
   - component: {fileID: 2000221885}
+  - component: {fileID: 2000221887}
   m_Layer: 5
   m_Name: PlyrBase
   m_TagString: Untagged
@@ -2975,6 +2995,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000221883}
   m_CullTransparentMesh: 1
+--- !u!114 &2000221887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000221883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356dfba022a021e41823852f5736fc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.2000831, g: 0.14489143, b: 0.8301887, a: 1}
+  healthTxt: {fileID: 1582645625}
+  interactable: 0
+  dmg: 0
 --- !u!1 &2006536802
 GameObject:
   m_ObjectHideFlags: 0

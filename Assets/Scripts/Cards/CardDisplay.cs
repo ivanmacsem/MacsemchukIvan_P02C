@@ -16,6 +16,10 @@ public class CardDisplay : MonoBehaviour
 
     public TraitDisplay trait1;
     public TraitDisplay trait2;
+    public bool inSlot = false;
+    public bool canAttack = false;
+    public bool canDblAttack = false;
+    public bool isShielded = false;
     void Start()
     {
         nameText.text = card.name;
@@ -33,6 +37,20 @@ public class CardDisplay : MonoBehaviour
             trait2.gameObject.SetActive(true);
             trait1.trait = card.traits[0];
             trait1.gameObject.SetActive(true);
+        }
+    }
+    void OnEnable(){
+        EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnd;
+    }
+    void OnDisable(){
+        EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnEnd;
+    }
+    void OnEnemyTurnEnd(){
+        if(inSlot){
+            canAttack = true;
+            if(card.dblStrike){
+                canDblAttack = true;
+            }
         }
     }
 }

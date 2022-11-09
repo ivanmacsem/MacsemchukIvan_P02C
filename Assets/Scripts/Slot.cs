@@ -9,13 +9,11 @@ public class Slot : MonoBehaviour, IDropHandler
     public RectTransform parent;
     private CardDisplay card;
     public void OnDrop(PointerEventData eventData){
-        Debug.Log("OnDrop");
         if(eventData.pointerDrag !=null){
-            if(!eventData.pointerDrag.GetComponent<Draggable>().inSlot){
+            if(!eventData.pointerDrag.GetComponent<CardDisplay>().inSlot){
                 if(cardsManager.Dropped(this)){
                         card = eventData.pointerDrag.GetComponent<CardDisplay>();
-                        card.card.canAttack = true;
-                        eventData.pointerDrag.GetComponent<Draggable>().inSlot = true;
+                        eventData.pointerDrag.GetComponent<CardDisplay>().inSlot = true;
                         eventData.pointerDrag.GetComponent<RectTransform>().SetParent(parent);
                         eventData.pointerDrag.GetComponent<RectTransform>().localPosition = this.GetComponent<RectTransform>().localPosition;
                 }

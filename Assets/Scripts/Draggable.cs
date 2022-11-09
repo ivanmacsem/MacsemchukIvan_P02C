@@ -11,10 +11,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
     private RectTransform rectTransform;
     private Vector2 startingPos;
     public Vector2 startingSlot;
-
-    public bool inSlot = false;
-    private bool interactible = true;
-    public CardDisplay cardDisplay;
+    private bool interactable = true;
+    public CardDisplay card;
     private CardsManager cardsManager;
     private CanvasGroup canvasGroup;
 
@@ -23,6 +21,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
         canvas = FindObjectOfType<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        card = GetComponent<CardDisplay>();
         startingPos = rectTransform.anchoredPosition;
     }
 
@@ -37,33 +36,33 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
     }
 
     private void OnEnemyTurnBegin(){
-        interactible = false;
+        interactable = false;
     }
 
     private void OnEnemyTurnEnded(){
-        interactible = true;
+        interactable = true;
     }
 
     public void OnBeginDrag(PointerEventData eventData){
-        if(interactible){
+        if(interactable){
             canvasGroup.alpha = 0.7f;
             canvasGroup.blocksRaycasts = false;
             startingPos = rectTransform.anchoredPosition;
-            if(inSlot){
+            if(card.inSlot){
                 startingSlot = rectTransform.localPosition;
             }
         }
     }
 
     public void OnDrag(PointerEventData eventData){
-        if(interactible){rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;}
+        if(interactable){rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;}
     }
 
     public void OnEndDrag(PointerEventData eventData){
-        if(interactible){
+        if(interactable){
             canvasGroup.blocksRaycasts = true;
             canvasGroup.alpha = 1f;
-            if(!inSlot){
+            if(!card.inSlot){
                 rectTransform.anchoredPosition = startingPos;
             }
             else{

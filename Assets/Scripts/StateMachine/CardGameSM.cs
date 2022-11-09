@@ -21,4 +21,17 @@ public class CardGameSM : StateMachine
     {
         ChangeState<SetupCardGameState>();
     }
+    public void AttackEnemy(int dmg){
+        Debug.Log(dmg);
+        _enemyHealth -= dmg;
+    }
+    public void AttackPlayer(int dmg){
+        _playerHealth -= dmg;
+    }
+    public void ChangePlayerEnergy(int q){
+        _playerEnergy += q;
+    }
+    public void ChangeEnemyEnergy(int q){
+        _enemyEnergy += q;
+    }
 }
