@@ -20,6 +20,8 @@ public class PlayerTurnCardGameState : CardGameState
         faded.a = 1;
         _playerTurnTextUI.color = faded;
 
+        StateMachine.CardsManager.PlayerDrawCard();
+
         StateMachine.Input.PressedEndTurn += OnPressedEndTurn;
     }
 

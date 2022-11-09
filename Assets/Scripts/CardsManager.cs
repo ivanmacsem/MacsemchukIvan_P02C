@@ -11,7 +11,7 @@ public class CardsManager : MonoBehaviour
     public Transform[] playerSlots;
     public Transform[] enemySlots;
 
-    public GameObject cardPrefab;
+    public CardDisplay cardPrefab;
 
     public HorizontalLayoutGroup playerHand;
     public bool[] availablePlayerSlots;
@@ -31,6 +31,9 @@ public class CardsManager : MonoBehaviour
     public void PlayerDrawCard(){
         if(playerDeck.Count >= 1){
             Card randCard = playerDeck[Random.Range(0, playerDeck.Count)];
+            cardPrefab.card = randCard;
+            Instantiate(cardPrefab.gameObject, playerHand.transform);
+            playerDeck.Remove(randCard);
         }
     }
 
