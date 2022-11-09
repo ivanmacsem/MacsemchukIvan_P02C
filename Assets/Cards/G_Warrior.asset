@@ -20,4 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d937a07c1260a394b9a57c82eae0bc62, type: 2}
   cost: 6
   power: 2
-  health: 5
+  health: 3

@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class SetupCardGameState : CardGameState
 {
-    [SerializeField] int _startingCardNumber = 25;
-
     bool _activated = false;
 
     public override void Enter(){
-        Debug.Log("Setup: Entering");
+        StateMachine.CardsManager.Setup(0, 1);
         _activated = false;
     }
 

@@ -17,6 +17,6 @@ MonoBehaviour:
   color: {r: 0.30588236, g: 0.74509805, b: 0.29411766, a: 1}
   traits:
   - {fileID: 11400000, guid: 9d82b136d5fb8b844b742d0fe10ebfcd, type: 2}
-  cost: 5
+  cost: 3
   power: 2
-  health: 3
+  health: 2
