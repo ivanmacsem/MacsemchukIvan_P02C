@@ -72,8 +72,9 @@ public class EnemyTurnCardGameState : CardGameState
             }
         }
         EnemyTurnEnded?.Invoke();
-
-        StateMachine.ChangeState<PlayerTurnCardGameState>();
+        if(StateMachine.CurrentState.Equals(this)){
+            StateMachine.ChangeState<PlayerTurnCardGameState>();
+        }
     }
 
     void AttackPlayer(CardDisplay card){
