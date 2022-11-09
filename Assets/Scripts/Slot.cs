@@ -14,6 +14,7 @@ public class Slot : MonoBehaviour, IDropHandler
             if(!eventData.pointerDrag.GetComponent<Draggable>().inSlot){
                 if(cardsManager.Dropped(this)){
                         card = eventData.pointerDrag.GetComponent<CardDisplay>();
+                        card.card.canAttack = true;
                         eventData.pointerDrag.GetComponent<Draggable>().inSlot = true;
                         eventData.pointerDrag.GetComponent<RectTransform>().SetParent(parent);
                         eventData.pointerDrag.GetComponent<RectTransform>().localPosition = this.GetComponent<RectTransform>().localPosition;

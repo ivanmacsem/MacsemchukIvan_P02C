@@ -45,6 +45,20 @@ public class CardsManager : MonoBehaviour
         return false;
     }
 
+    public void Attack(Card att, Card def){
+        if(att.color != def.color){
+            
+        }
+    }
+
+    public void AttackBase(Card c, bool player){
+        if(player){
+        }
+        else{
+
+        }
+    }
+
     public void CreateDecks(int player, int enemy){
         for(int i = 0; i<buffoons; i++){
             playerDeck.Add(allCards[0+player*10]);

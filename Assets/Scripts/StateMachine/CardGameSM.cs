@@ -13,6 +13,10 @@ public class CardGameSM : StateMachine
     public int PlayerHealth => _playerHealth;
     [SerializeField] int _enemyHealth;
     public int EnemyHealth => _enemyHealth;
+    [SerializeField] int _playerEnergy;
+    public int PlayerEnergy => _playerEnergy;
+    [SerializeField] int _enemyEnergy;
+    public int EnemyEnergy => _enemyEnergy;
     void Start()
     {
         ChangeState<SetupCardGameState>();

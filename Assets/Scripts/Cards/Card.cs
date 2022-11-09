@@ -15,4 +15,6 @@ public class Card : ScriptableObject
     public int power;
     public int health;
 
+    public bool canAttack = false;
+
 }
