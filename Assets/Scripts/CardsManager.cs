@@ -8,7 +8,7 @@ public class CardsManager : MonoBehaviour
     public List<Card> allCards = new List<Card>();
     public List<Card> playerDeck = new List<Card>();
     public List<Card> enemyDeck = new List<Card>();
-    public Transform[] playerSlots;
+    public List<Slot> playerSlots = new List<Slot>();
     public Transform[] enemySlots;
 
     public CardDisplay cardPrefab;
@@ -35,6 +35,14 @@ public class CardsManager : MonoBehaviour
             Instantiate(cardPrefab.gameObject, playerHand.transform);
             playerDeck.Remove(randCard);
         }
+    }
+
+    public bool Dropped(Slot s){
+        if(availablePlayerSlots[playerSlots.IndexOf(s)]){
+            availablePlayerSlots[playerSlots.IndexOf(s)] = false;
+            return true;
+        }
+        return false;
     }
 
     public void CreateDecks(int player, int enemy){
