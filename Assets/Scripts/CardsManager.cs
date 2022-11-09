@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardsManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class CardsManager : MonoBehaviour
     public List<Card> enemyDeck = new List<Card>();
     public Transform[] playerSlots;
     public Transform[] enemySlots;
+
+    public GameObject cardPrefab;
+
+    public HorizontalLayoutGroup playerHand;
     public bool[] availablePlayerSlots;
     public bool[] availableEnemySlots;
 
@@ -29,7 +34,7 @@ public class CardsManager : MonoBehaviour
         }
     }
 
-    public void Setup(int player, int enemy){
+    public void CreateDecks(int player, int enemy){
         for(int i = 0; i<buffoons; i++){
             playerDeck.Add(allCards[0+player*10]);
             enemyDeck.Add(allCards[0+enemy*10]);
