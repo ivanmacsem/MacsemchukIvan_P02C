@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Rush
   description: This card can attack the same turn it's played
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 167da53bc972f024fb0a87c7e8b97419, type: 3}

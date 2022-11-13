@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Taunt
   description: All opposing cards must attack this card when it is in play
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: c32cc62ce78bcc345941927cfed9e5bb, type: 3}

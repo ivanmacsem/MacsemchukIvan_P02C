@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Ranged
   description: This card does not take damage when attacking
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 366db599dcb96b44aaab17d22a46fed6, type: 3}
