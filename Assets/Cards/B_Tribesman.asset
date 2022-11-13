@@ -19,3 +19,11 @@ MonoBehaviour:
   cost: 1
   power: 2
   health: 1
+  dblStrike: 0
+  shield: 0
+  banish: 0
+  callback: 0
+  ranged: 0
+  rush: 0
+  spray: 0
+  taunt: 0

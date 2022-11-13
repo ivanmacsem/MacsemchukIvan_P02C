@@ -45,11 +45,15 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
 
     public void OnBeginDrag(PointerEventData eventData){
         if(interactable){
-            canvasGroup.alpha = 0.7f;
+            canvasGroup.alpha = 0.9f;
             canvasGroup.blocksRaycasts = false;
             startingPos = rectTransform.anchoredPosition;
             if(card.inSlot){
                 startingSlot = rectTransform.localPosition;
+            }
+            if(!card.inSlot && rectTransform.parent.GetComponent<PlayerHand>()!=null){
+                rectTransform.parent.GetComponent<PlayerHand>().drag();
+                rectTransform.anchoredPosition += new Vector2(0,165);
             }
         }
     }
@@ -59,6 +63,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
     }
 
     public void OnEndDrag(PointerEventData eventData){
+        rectTransform.parent.GetComponent<PlayerHand>().endDrag();
         if(interactable){
             canvasGroup.blocksRaycasts = true;
             canvasGroup.alpha = 1f;
