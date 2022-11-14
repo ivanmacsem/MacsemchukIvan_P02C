@@ -15,6 +15,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
     public CardDisplay card;
     private CardsManager cardsManager;
     private CanvasGroup canvasGroup;
+    private PlayerHand playerHand;
 
     private void Awake(){
         cardsManager = FindObjectOfType<CardsManager>();
@@ -52,7 +53,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
                 startingSlot = rectTransform.localPosition;
             }
             if(!card.inSlot && rectTransform.parent.GetComponent<PlayerHand>()!=null){
-                rectTransform.parent.GetComponent<PlayerHand>().drag();
+                playerHand = rectTransform.parent.GetComponent<PlayerHand>();
+                playerHand.drag();
                 rectTransform.anchoredPosition += new Vector2(0,165);
             }
         }
@@ -63,7 +65,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
     }
 
     public void OnEndDrag(PointerEventData eventData){
-        rectTransform.parent.GetComponent<PlayerHand>().endDrag();
+        playerHand?.endDrag();
         if(interactable){
             canvasGroup.blocksRaycasts = true;
             canvasGroup.alpha = 1f;

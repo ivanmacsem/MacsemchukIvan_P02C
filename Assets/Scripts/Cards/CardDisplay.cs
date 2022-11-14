@@ -89,8 +89,5 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if(eventData.button == PointerEventData.InputButton.Right){
             zoomCard?.Invoke(this);
         }
-        else{
-            card.health -= 1;
-        }
     }
 }
