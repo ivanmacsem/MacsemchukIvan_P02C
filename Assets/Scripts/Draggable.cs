@@ -25,6 +25,11 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
         card = GetComponent<CardDisplay>();
         startingPos = rectTransform.anchoredPosition;
     }
+    void Update(){
+        if(card.inSlot && !card.canAttack && !card.canDblAttack){
+            interactable = false;
+        }
+    }
 
     private void OnEnable(){
         EnemyTurnCardGameState.EnemyTurnBegan += OnEnemyTurnBegin;
@@ -51,6 +56,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
             startingPos = rectTransform.anchoredPosition;
             if(card.inSlot){
                 startingSlot = rectTransform.localPosition;
+                rectTransform.SetAsLastSibling();
             }
             if(!card.inSlot && rectTransform.parent.GetComponent<PlayerHand>()!=null){
                 playerHand = rectTransform.parent.GetComponent<PlayerHand>();
@@ -77,6 +83,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
                     rectTransform.localPosition = startingSlot;
                 }
             }
+            gameObject.layer = 5;
         }
     }
 }

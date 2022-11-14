@@ -1030,7 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64be6dff056920747ab3f550dc41c509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 98a278eda63173343a2c80e7608bb255, type: 2}
+  card: {fileID: 11400000, guid: efad59c89e6be5948ad86335632d57fe, type: 2}
   nameText: {fileID: 3459207906689856248}
   costText: {fileID: 3459207906890560098}
   powerText: {fileID: 3459207904957701682}
@@ -1039,9 +1039,12 @@ MonoBehaviour:
   trait1: {fileID: 3459207905042231655}
   trait2: {fileID: 3459207906748005252}
   inSlot: 0
+  isPlayer: 1
+  currHP: 0
   canAttack: 0
   canDblAttack: 0
   isShielded: 0
+  hasShielded: 0
 --- !u!114 &693964962859808564
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,12 +8,14 @@ public class Slot : MonoBehaviour, IDropHandler
 {
     public static event Action<Slot, CardDisplay> drop = delegate { };
     public CardsManager cardsManager;
+    public CardDisplay card;
     public bool player;
     public RectTransform parent;
     public void OnDrop(PointerEventData eventData){
         if(eventData.pointerDrag !=null){
             if(!eventData.pointerDrag.GetComponent<CardDisplay>().inSlot){
                 drop?.Invoke(this, eventData.pointerDrag.GetComponent<CardDisplay>());
+                card = eventData.pointerDrag.GetComponent<CardDisplay>();
             }
         }
     }

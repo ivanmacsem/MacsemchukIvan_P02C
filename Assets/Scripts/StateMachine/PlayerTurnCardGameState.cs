@@ -32,6 +32,7 @@ public class PlayerTurnCardGameState : CardGameState
         StateMachine.Input.PressedEndTurn += OnPressedEndTurn;
         _enemyBase.BaseAttacked += AttackEnemy;
         Slot.drop += OnDrop;
+        CardDisplay.destroyed += OnDestroy;
     }
 
     public override void Tick()
@@ -54,6 +55,7 @@ public class PlayerTurnCardGameState : CardGameState
         Slot.drop -= OnDrop;
 
         _enemyBase.interactable = false;
+        CardDisplay.destroyed -= OnDestroy;
 
         Debug.Log("Player Turn: Exit");
     }
@@ -74,6 +76,22 @@ public class PlayerTurnCardGameState : CardGameState
             card.GetComponent<RectTransform>().SetParent(s.parent);
             card.GetComponent<RectTransform>().localPosition = s.GetComponent<RectTransform>().localPosition;
             StateMachine.ChangePlayerEnergy(-card.card.cost);
+        }
+    }
+    void OnDestroy(CardDisplay card){
+        if(card.isPlayer){
+            for(int i = 0; i < StateMachine.CardsManager.playerSlots.Count; i++){
+                if(StateMachine.CardsManager.playerSlots[i].card == card){
+                    StateMachine.CardsManager.availablePlayerSlots[i] = true;
+                }
+            }
+        }
+        else{
+            for(int i = 0; i < StateMachine.CardsManager.enemySlots.Count; i++){
+                if(StateMachine.CardsManager.enemySlots[i].card == card){
+                    StateMachine.CardsManager.availableEnemySlots[i] = true;
+                }
+            }
         }
     }
 }

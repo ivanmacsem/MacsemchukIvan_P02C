@@ -26,6 +26,8 @@ public class EnemyTurnCardGameState : CardGameState
         _enemyTurnTextUI.color = faded;
         EnemyTurnBegan?.Invoke();
 
+        CardDisplay.destroyed += OnDestroy;
+
         _playerBase.interactable = true;
         StateMachine.ChangeEnemyEnergy(StateMachine.EnergyProd);
         StateMachine.CardsManager.EnemyDrawCard();
@@ -49,6 +51,8 @@ public class EnemyTurnCardGameState : CardGameState
         Debug.Log("Enemy Turn: Exit");
         _enemyTurnUI.SetActive(false);
         _playerBase.interactable = false;
+
+        CardDisplay.destroyed -= OnDestroy;
     }
 
     IEnumerator EnemyThinkingRoutine(float pauseDuration){
@@ -91,6 +95,22 @@ public class EnemyTurnCardGameState : CardGameState
                 card.GetComponent<RectTransform>().localPosition = StateMachine.CardsManager.enemySlots[i].GetComponent<RectTransform>().localPosition;
                 StateMachine.ChangeEnemyEnergy(-card.card.cost);
                 return;
+            }
+        }
+    }
+    void OnDestroy(CardDisplay card){
+        if(card.isPlayer){
+            for(int i = 0; i < StateMachine.CardsManager.playerSlots.Count; i++){
+                if(StateMachine.CardsManager.playerSlots[i].card == card){
+                    StateMachine.CardsManager.availablePlayerSlots[i] = true;
+                }
+            }
+        }
+        else{
+            for(int i = 0; i < StateMachine.CardsManager.enemySlots.Count; i++){
+                if(StateMachine.CardsManager.enemySlots[i].card == card){
+                    StateMachine.CardsManager.availableEnemySlots[i] = true;
+                }
             }
         }
     }

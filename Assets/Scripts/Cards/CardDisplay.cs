@@ -5,11 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IDropHandler
 {
     public Card card;
     private RectTransform rectTransform;
     public static event Action<CardDisplay> zoomCard = delegate { };
+    public static event Action<CardDisplay> destroyed = delegate { };
     public Text nameText;
     public Text costText;
     public Text powerText;
@@ -20,10 +21,12 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public TraitDisplay trait1;
     public TraitDisplay trait2;
     public bool inSlot = false;
+    public bool isPlayer = false;
     public int currHP = 0;
     public bool canAttack = false;
     public bool canDblAttack = false;
     public bool isShielded = false;
+    public bool hasShielded = false;
     public void Start()
     {
         nameText.text = card.name;
@@ -48,6 +51,14 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             trait2.gameObject.SetActive(false);
         }
         rectTransform = GetComponent<RectTransform>();
+        isShielded = card.shield;
+    }
+    public void Update(){
+        healthText.text = currHP.ToString();
+        if(currHP <= 0){
+            destroyed?.Invoke(this);
+            Destroy(this.gameObject);
+        }
     }
     void OnEnable(){
         EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnd;
@@ -88,6 +99,31 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerClick(PointerEventData eventData){
         if(eventData.button == PointerEventData.InputButton.Right){
             zoomCard?.Invoke(this);
+        }
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if(eventData.pointerDrag.GetComponent<CardDisplay>().canAttack){
+            this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, true);
+            eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, false);
+            eventData.pointerDrag.GetComponent<CardDisplay>().canAttack = false;
+        }
+        else if(eventData.pointerDrag.GetComponent<CardDisplay>().canDblAttack){
+            this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, true);
+            eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, false);
+            eventData.pointerDrag.GetComponent<CardDisplay>().canDblAttack = false;
+        }
+    }
+
+    public void TakeDamage(int dmg, bool attacking){
+        if(!(attacking && card.ranged)){
+            if(!isShielded){
+                currHP -= dmg;
+            }
+            else{
+                isShielded = false;
+            }
         }
     }
 }

@@ -36,6 +36,7 @@ public class CardsManager : MonoBehaviour
         if(playerDeck.Count >= 1){
             Card randCard = playerDeck[Random.Range(0, playerDeck.Count)];
             cardPrefab.card = randCard;
+            cardPrefab.isPlayer = true;
             Instantiate(cardPrefab.gameObject, playerHand.transform);
             playerDeck.Remove(randCard);
         }
@@ -44,7 +45,9 @@ public class CardsManager : MonoBehaviour
         if(enemyDeck.Count >= 1){
             Card randCard = enemyDeck[Random.Range(0, enemyDeck.Count)];
             cardPrefab.card = randCard;
+            cardPrefab.isPlayer = false;
             GameObject newCard = Instantiate(cardPrefab.gameObject, enemyHandTransform.transform);
+            newCard.GetComponent<Draggable>().enabled = false;
             enemyDeck.Remove(randCard);
             enemyHand.Add(newCard.GetComponent<CardDisplay>());
         }
