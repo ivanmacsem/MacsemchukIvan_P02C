@@ -10,6 +10,8 @@ public class PlayerTurnCardGameState : CardGameState
     [SerializeField] Text _playerEnergy = null;
     [SerializeField] GameObject _playerTurnUI = null;
     [SerializeField] Base _enemyBase = null;
+    public static event Action<bool> TauntPlayer;
+    public static event Action<bool> TauntEnemy;
 
     private Color faded;
 
@@ -32,7 +34,7 @@ public class PlayerTurnCardGameState : CardGameState
         StateMachine.Input.PressedEndTurn += OnPressedEndTurn;
         _enemyBase.BaseAttacked += AttackEnemy;
         Slot.drop += OnDrop;
-        CardDisplay.destroyed += OnDestroy;
+        CardDisplay.destroyed += OnDestroyed;
     }
 
     public override void Tick()
@@ -55,7 +57,7 @@ public class PlayerTurnCardGameState : CardGameState
         Slot.drop -= OnDrop;
 
         _enemyBase.interactable = false;
-        CardDisplay.destroyed -= OnDestroy;
+        CardDisplay.destroyed -= OnDestroyed;
 
         Debug.Log("Player Turn: Exit");
     }
@@ -76,20 +78,37 @@ public class PlayerTurnCardGameState : CardGameState
             card.GetComponent<RectTransform>().SetParent(s.parent);
             card.GetComponent<RectTransform>().localPosition = s.GetComponent<RectTransform>().localPosition;
             StateMachine.ChangePlayerEnergy(-card.card.cost);
+            if(card.card.taunt){
+                TauntEnemy.Invoke(true);
+            }
         }
     }
-    void OnDestroy(CardDisplay card){
+    void OnDestroyed(CardDisplay card){
         if(card.isPlayer){
             for(int i = 0; i < StateMachine.CardsManager.playerSlots.Count; i++){
-                if(StateMachine.CardsManager.playerSlots[i].card == card){
-                    StateMachine.CardsManager.availablePlayerSlots[i] = true;
+                if(StateMachine.CardsManager.playerSlots[i] != null){
+                    if(StateMachine.CardsManager.playerSlots[i].card.Equals(card)){
+                        StateMachine.CardsManager.availablePlayerSlots[i] = true;
+                        if(card.card.taunt){
+                            TauntEnemy.Invoke(false);
+                        }
+                        Destroy(card.gameObject);
+                        return;
+                    }
                 }
             }
         }
         else{
             for(int i = 0; i < StateMachine.CardsManager.enemySlots.Count; i++){
-                if(StateMachine.CardsManager.enemySlots[i].card == card){
-                    StateMachine.CardsManager.availableEnemySlots[i] = true;
+                if(StateMachine.CardsManager.enemySlots[i] != null){
+                    if(StateMachine.CardsManager.enemySlots[i].card.Equals(card)){
+                        StateMachine.CardsManager.availableEnemySlots[i] = true;
+                        if(card.card.taunt){
+                            TauntPlayer.Invoke(false);
+                        }
+                        Destroy(card.gameObject);
+                        return;
+                    }
                 }
             }
         }

@@ -31,6 +31,8 @@ public class CardsManager : MonoBehaviour
     public int tribesmen = 0;
     public int warriors = 0;
     public int youths = 0;
+    public bool playerTaunt = false;
+    public bool enemyTaunt = false;
 
     public void PlayerDrawCard(){
         if(playerDeck.Count >= 1){

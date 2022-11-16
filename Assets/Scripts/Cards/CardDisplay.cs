@@ -17,6 +17,8 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Text healthText;
 
     public Image background;
+    [SerializeField] Image shieldImg;
+    [SerializeField] Image tauntImg;
 
     public TraitDisplay trait1;
     public TraitDisplay trait2;
@@ -27,6 +29,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public bool canDblAttack = false;
     public bool isShielded = false;
     public bool hasShielded = false;
+    public bool isTaunted = false;
     public void Start()
     {
         nameText.text = card.name;
@@ -52,21 +55,37 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
         rectTransform = GetComponent<RectTransform>();
         isShielded = card.shield;
+        shieldImg.gameObject.SetActive(isShielded);
+        tauntImg.gameObject.SetActive(card.taunt);
     }
     public void Update(){
         healthText.text = currHP.ToString();
-        if(currHP <= 0){
-            destroyed?.Invoke(this);
-            Destroy(this.gameObject);
-        }
     }
     void OnEnable(){
         EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnd;
         EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnBegin;
+
+        if(isPlayer){
+            EnemyTurnCardGameState.TauntPlayer += OnTaunt;
+            PlayerTurnCardGameState.TauntPlayer += OnTaunt;
+        }
+        else{
+            EnemyTurnCardGameState.TauntEnemy += OnTaunt;
+            PlayerTurnCardGameState.TauntEnemy += OnTaunt;
+        }
     }
     void OnDisable(){
         EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnEnd;
         EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnBegin;
+
+        if(isPlayer){
+            EnemyTurnCardGameState.TauntPlayer -= OnTaunt;
+            PlayerTurnCardGameState.TauntPlayer -= OnTaunt;
+        }
+        else{
+            EnemyTurnCardGameState.TauntEnemy -= OnTaunt;
+            PlayerTurnCardGameState.TauntEnemy -= OnTaunt;
+        }
     }
     void OnEnemyTurnEnd(){
         if(inSlot){
@@ -83,6 +102,9 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 canDblAttack = true;
             }
         }
+    }
+    void OnTaunt(bool taunted){
+        isTaunted = taunted;
     }
     public void OnPointerEnter(PointerEventData eventData){
         if(!inSlot && rectTransform.parent.GetComponent<PlayerHand>()!=null){
@@ -104,15 +126,19 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnDrop(PointerEventData eventData)
     {
-        if(eventData.pointerDrag.GetComponent<CardDisplay>().canAttack){
-            this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, true);
-            eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, false);
-            eventData.pointerDrag.GetComponent<CardDisplay>().canAttack = false;
-        }
-        else if(eventData.pointerDrag.GetComponent<CardDisplay>().canDblAttack){
-            this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, true);
-            eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, false);
-            eventData.pointerDrag.GetComponent<CardDisplay>().canDblAttack = false;
+        if((!eventData.pointerDrag.GetComponent<CardDisplay>().isTaunted) || (eventData.pointerDrag.GetComponent<CardDisplay>().isTaunted && card.taunt)){
+            if(!isPlayer){
+                if(eventData.pointerDrag.GetComponent<CardDisplay>().canAttack){
+                    this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, false); 
+                    eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, true);
+                    eventData.pointerDrag.GetComponent<CardDisplay>().canAttack = false;
+                }
+                else if(eventData.pointerDrag.GetComponent<CardDisplay>().canDblAttack){
+                    this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, false);
+                    eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, true);
+                    eventData.pointerDrag.GetComponent<CardDisplay>().canDblAttack = false;
+                }
+            }
         }
     }
 
@@ -122,8 +148,12 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 currHP -= dmg;
             }
             else{
+                shieldImg.gameObject.SetActive(false);
                 isShielded = false;
             }
+        }
+        if(currHP <= 0){
+            destroyed?.Invoke(this);
         }
     }
 }

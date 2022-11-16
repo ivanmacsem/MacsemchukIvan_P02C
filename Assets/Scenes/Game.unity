@@ -901,6 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsManager: {fileID: 872373388}
+  card: {fileID: 0}
   player: 1
   parent: {fileID: 240797564}
 --- !u!1 &416874637
@@ -1608,6 +1609,8 @@ MonoBehaviour:
   tribesmen: 8
   warriors: 2
   youths: 4
+  playerTaunt: 0
+  enemyTaunt: 0
 --- !u!1 &873632338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,6 +1701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsManager: {fileID: 872373388}
+  card: {fileID: 0}
   player: 1
   parent: {fileID: 240797564}
 --- !u!1 &947491270
@@ -2315,6 +2319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsManager: {fileID: 872373388}
+  card: {fileID: 0}
   player: 0
   parent: {fileID: 1384052429}
 --- !u!1 &1205677354
@@ -2407,6 +2412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsManager: {fileID: 872373388}
+  card: {fileID: 0}
   player: 0
   parent: {fileID: 1384052429}
 --- !u!1 &1279699872
@@ -2499,6 +2505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsManager: {fileID: 872373388}
+  card: {fileID: 0}
   player: 1
   parent: {fileID: 240797564}
 --- !u!1 &1308549530
@@ -2591,6 +2598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsManager: {fileID: 872373388}
+  card: {fileID: 0}
   player: 1
   parent: {fileID: 240797564}
 --- !u!1 &1314292499
@@ -2846,6 +2854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsManager: {fileID: 872373388}
+  card: {fileID: 0}
   player: 0
   parent: {fileID: 1384052429}
 --- !u!1 &1380839513
@@ -3537,7 +3546,7 @@ MonoBehaviour:
   _enemyTurnTextUI: {fileID: 10611901}
   _enemyEnergy: {fileID: 110410782}
   _enemyTurnUI: {fileID: 1915812740}
-  _pauseDuration: 1
+  _pauseDuration: 0.5
   _playerBase: {fileID: 2000221887}
 --- !u!114 &1565859210
 MonoBehaviour:
@@ -4666,6 +4675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsManager: {fileID: 872373388}
+  card: {fileID: 0}
   player: 0
   parent: {fileID: 1384052429}
 --- !u!1 &2121199836
