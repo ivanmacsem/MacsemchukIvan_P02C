@@ -19,6 +19,11 @@ public class CardGameSM : StateMachine
     public int EnemyEnergy => _enemyEnergy;
     [SerializeField] int _energyProd = 2;
     public int EnergyProd => _energyProd;
+    private bool _playerTaunted = false;
+    public bool PlayerTaunted => _playerTaunted;
+    private bool _enemyTaunted = false;
+    public bool EnemyTaunted => _enemyTaunted;
+
     void Start()
     {
         ChangeState<SetupCardGameState>();
@@ -29,9 +34,14 @@ public class CardGameSM : StateMachine
     public void AttackEnemy(int dmg){
         _enemyHealth -= dmg;
     }
-    public void AttackPlayer(int dmg){
-        Debug.Log(dmg);
+    public void AttackPlayerBase(int dmg){
         _playerHealth -= dmg;
+    }
+    public void TauntPlayer(bool taunted){
+        _playerTaunted = taunted;
+    }
+    public void TauntEnemy(bool taunted){
+        _enemyTaunted = taunted;
     }
     public void ChangePlayerEnergy(int q){
         _playerEnergy += q;

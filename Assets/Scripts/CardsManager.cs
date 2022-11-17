@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class CardsManager : MonoBehaviour
 {
+    public static Action PlayerWin = delegate {};
+    public static Action PlayerLose = delegate {};
     public List<Card> allCards = new List<Card>();
     public List<Card> playerDeck = new List<Card>();
     public List<Card> enemyDeck = new List<Card>();
     public List<Slot> playerSlots = new List<Slot>();
     public List<Slot> enemySlots = new List<Slot>();
     public List<CardDisplay> enemyHand = new List<CardDisplay>();
-    public List<CardDisplay> enemyCardsInSlots = new List<CardDisplay>();
-
     public CardDisplay cardPrefab;
 
     public HorizontalLayoutGroup playerHand;
@@ -20,6 +21,9 @@ public class CardsManager : MonoBehaviour
     public HorizontalLayoutGroup enemyHandTransform;
     public bool[] availablePlayerSlots;
     public bool[] availableEnemySlots;
+
+    [SerializeField] Text playerDeckCountTxt;
+    [SerializeField] Text enemyDeckCountTxt;
 
     public int buffoons = 0;
     public int chiefs = 0;
@@ -36,22 +40,93 @@ public class CardsManager : MonoBehaviour
 
     public void PlayerDrawCard(){
         if(playerDeck.Count >= 1){
-            Card randCard = playerDeck[Random.Range(0, playerDeck.Count)];
+            Card randCard = playerDeck[UnityEngine.Random.Range(0, playerDeck.Count)];
             cardPrefab.card = randCard;
             cardPrefab.isPlayer = true;
             Instantiate(cardPrefab.gameObject, playerHand.transform);
             playerDeck.Remove(randCard);
+            playerDeckCountTxt.text = "(" + playerDeck.Count + ")";
+        }
+        else{
+            PlayerLose.Invoke();
         }
     }
     public void EnemyDrawCard(){
         if(enemyDeck.Count >= 1){
-            Card randCard = enemyDeck[Random.Range(0, enemyDeck.Count)];
+            Card randCard = enemyDeck[UnityEngine.Random.Range(0, enemyDeck.Count)];
             cardPrefab.card = randCard;
             cardPrefab.isPlayer = false;
             GameObject newCard = Instantiate(cardPrefab.gameObject, enemyHandTransform.transform);
             newCard.GetComponent<Draggable>().enabled = false;
             enemyDeck.Remove(randCard);
             enemyHand.Add(newCard.GetComponent<CardDisplay>());
+            enemyDeckCountTxt.text = "(" + enemyDeck.Count + ")";
+        }
+        else{
+            PlayerWin.Invoke();
+        }
+    }
+
+    public void Spray(bool player){
+        if(player){
+            for(int i = 0; i<playerSlots.Count; i++){
+                if(playerSlots[i].card != null){
+                    playerSlots[i].card.TakeDamage(1, false);
+                }
+            }
+        }
+        else{
+            for(int i = 0; i<enemySlots.Count; i++){
+                if(enemySlots[i].card != null){
+                    enemySlots[i].card.TakeDamage(1, false);
+                }
+            }
+        }
+    }
+
+    public void Banish(bool player){
+        List<int> inSlots = new List<int>();
+        if(player){
+            for(int i = 0; i<playerSlots.Count; i++){
+                if(playerSlots[i].card != null){
+                    inSlots.Add(i);
+                }
+            }
+            playerSlots[inSlots[UnityEngine.Random.Range(0, inSlots.Count-1)]].card.TakeDamage(99, false);
+        }
+        else{
+            for(int i = 0; i<enemySlots.Count; i++){
+                if(enemySlots[i].card != null){
+                    inSlots.Add(i);
+                }
+            }
+            enemySlots[inSlots[UnityEngine.Random.Range(0, inSlots.Count-1)]].card.TakeDamage(99, false);
+        }
+    }
+
+    public void Callback(bool player){
+        if(player){
+            for(int i = 0; i<playerSlots.Count; i++){
+                if(playerSlots[i].card != null){
+                    availablePlayerSlots[i] = true;
+                    playerSlots[i].card.inSlot = false;
+                    playerSlots[i].card.GetComponent<RectTransform>().SetParent(playerHand.transform);
+                    playerSlots[i].card.Start();
+                    playerSlots[i].card = null;
+                }
+            }
+        }
+        else{
+            for(int i = 0; i<enemySlots.Count; i++){
+                if(enemySlots[i].card != null){
+                    availableEnemySlots[i] = true;
+                    enemyHand.Add(enemySlots[i].card);
+                    enemySlots[i].card.inSlot = false;
+                    enemySlots[i].card.GetComponent<RectTransform>().SetParent(enemyHandTransform.transform);
+                    enemySlots[i].card.Start();
+                    enemySlots[i].card = null;
+                }
+            }
         }
     }
 

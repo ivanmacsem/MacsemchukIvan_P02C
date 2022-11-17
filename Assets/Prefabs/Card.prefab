@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28627452, g: 0.16470589, b: 0.4156863, a: 1}
+  m_Color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1116,6 +1116,7 @@ MonoBehaviour:
   background: {fileID: 3459207906915642517}
   shieldImg: {fileID: 8928636460193500485}
   tauntImg: {fileID: 4488193041880963150}
+  borderImg: {fileID: 3717710345831987136}
   trait1: {fileID: 3459207905042231655}
   trait2: {fileID: 3459207906748005252}
   inSlot: 0
@@ -1293,7 +1294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

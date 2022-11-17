@@ -30,6 +30,12 @@ public class PlayerTurnCardGameState : CardGameState
         StateMachine.CardsManager.PlayerDrawCard();
         StateMachine.IncreaseEnergy();
         StateMachine.ChangePlayerEnergy(StateMachine.EnergyProd);
+        if(StateMachine.PlayerTaunted){
+            TauntPlayer.Invoke(true);
+        }
+        if(StateMachine.EnemyTaunted){
+            TauntEnemy.Invoke(true);
+        }
 
         StateMachine.Input.PressedEndTurn += OnPressedEndTurn;
         _enemyBase.BaseAttacked += AttackEnemy;
@@ -73,6 +79,13 @@ public class PlayerTurnCardGameState : CardGameState
 
     void OnDrop(Slot s, CardDisplay card){
         if(StateMachine.CardsManager.EmptySlot(s) && StateMachine.PlayerEnergy >= card.card.cost && s.player){
+            if(card.card.callback){
+                StateMachine.CardsManager.Callback(true);
+                if(StateMachine.EnemyTaunted){
+                    TauntEnemy.Invoke(false);
+                    StateMachine.TauntEnemy(false);
+                }
+            }
             card.inSlot = true;
             StateMachine.CardsManager.availablePlayerSlots[StateMachine.CardsManager.playerSlots.IndexOf(s)] = false;
             card.GetComponent<RectTransform>().SetParent(s.parent);
@@ -81,6 +94,19 @@ public class PlayerTurnCardGameState : CardGameState
             if(card.card.taunt){
                 TauntEnemy.Invoke(true);
             }
+            if(card.card.rush){
+                card.canAttack = true;
+                if(card.card.dblStrike){
+                    card.canDblAttack = true;
+                }
+            }
+            if(card.card.spray){
+                StateMachine.CardsManager.Spray(false);
+            }
+            if(card.card.banish){
+                StateMachine.CardsManager.Banish(false);
+            }
+            
         }
     }
     void OnDestroyed(CardDisplay card){

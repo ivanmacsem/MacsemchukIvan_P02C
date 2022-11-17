@@ -19,6 +19,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Image background;
     [SerializeField] Image shieldImg;
     [SerializeField] Image tauntImg;
+    [SerializeField] Image borderImg;
 
     public TraitDisplay trait1;
     public TraitDisplay trait2;
@@ -60,6 +61,12 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
     public void Update(){
         healthText.text = currHP.ToString();
+        if(canAttack || canDblAttack){
+            borderImg.color = Color.white;
+        }
+        else{
+            borderImg.color = Color.grey;
+        }
     }
     void OnEnable(){
         EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnd;

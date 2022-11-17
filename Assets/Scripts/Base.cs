@@ -27,6 +27,11 @@ public class Base : MonoBehaviour, IDropHandler
                     eventData.pointerDrag.GetComponent<CardDisplay>().canAttack = false;
                     BaseAttacked?.Invoke();
                 }
+                else if(eventData.pointerDrag.GetComponent<CardDisplay>().canDblAttack){
+                    dmg = eventData.pointerDrag.GetComponent<CardDisplay>().card.power;
+                    eventData.pointerDrag.GetComponent<CardDisplay>().canDblAttack = false;
+                    BaseAttacked?.Invoke();
+                }
             }
         }
     }

@@ -27,6 +27,12 @@ public class EnemyTurnCardGameState : CardGameState
         faded.a = 1;
         _enemyTurnTextUI.color = faded;
         EnemyTurnBegan?.Invoke();
+        if(StateMachine.PlayerTaunted){
+            TauntPlayer.Invoke(true);
+        }
+        if(StateMachine.EnemyTaunted){
+            TauntEnemy.Invoke(true);
+        }
 
         CardDisplay.destroyed += OnDestroyed;
 
@@ -60,7 +66,8 @@ public class EnemyTurnCardGameState : CardGameState
     IEnumerator EnemyThinkingRoutine(float pauseDuration){
         yield return new WaitForSeconds(pauseDuration*1.5f);
         List<CardDisplay> added = new List<CardDisplay>();
-        foreach(CardDisplay card in StateMachine.CardsManager.enemyHand){
+        List<CardDisplay> temp = StateMachine.CardsManager.enemyHand;
+        foreach(CardDisplay card in temp){
             yield return new WaitForSeconds(pauseDuration);
             if(StateMachine.EnemyEnergy >= card.card.cost){
                 AddCard(card);
@@ -71,9 +78,14 @@ public class EnemyTurnCardGameState : CardGameState
             StateMachine.CardsManager.enemyHand.Remove(card);
         }
         foreach(Slot slot in StateMachine.CardsManager.enemySlots){
-            if(slot.card!= null && slot.card.canAttack){
+            if(slot.card != null && slot.card.canAttack){
                 yield return new WaitForSeconds(pauseDuration);
                 AttackPlayer(slot.card);
+                slot.card.canAttack = false;
+                if(slot.card.canDblAttack){
+                    AttackPlayer(slot.card);
+                    slot.card.canDblAttack = false;
+                }
                 yield return new WaitForSeconds(pauseDuration);
             }
         }
@@ -84,12 +96,83 @@ public class EnemyTurnCardGameState : CardGameState
     }
 
     void AttackPlayer(CardDisplay card){
-        StateMachine.AttackPlayer(card.card.power);
-        _playerBase.healthTxt.text = StateMachine.PlayerHealth.ToString();
+        if(!StateMachine.EnemyTaunted){
+            int highestEval = card.card.power;
+            Slot bestMove = null;
+            foreach(Slot s in StateMachine.CardsManager.playerSlots){
+                if(s.card != null){
+                    int curEval = 0;
+                    CardDisplay playerCard = s.card;
+
+                    int dmgDone = card.card.power;
+                    int dmgTaken = playerCard.card.power;
+                    bool kills = (dmgDone-playerCard.currHP >= 0) ? true: false;
+                    bool dies = (dmgTaken-card.currHP >= 0) ? true: false;
+
+                    if(playerCard.isShielded){
+                        dmgDone = 1;
+                        kills = false;
+                    }
+                    if(card.isShielded){
+                        dmgTaken = 1;
+                        dies = false;
+                    }
+                    if(card.card.ranged){
+                        dmgTaken = 0;
+                        dies = false;
+                    }
+
+                    if(kills && !dies){
+                        curEval =  (playerCard.card.cost-card.card.cost) + playerCard.card.cost*2 - dmgTaken;
+                    }
+                    else if(kills && dies){
+                        curEval = (playerCard.card.cost-card.card.cost)*2;
+                    }
+                    else if(!kills && !dies){
+                        curEval = (dmgDone-dmgTaken) + (playerCard.card.cost-card.card.cost);
+                    }
+                    else{
+                        curEval = dmgDone - card.card.cost*2 + (playerCard.card.cost-card.card.cost);
+                    }
+
+                    if(curEval >= highestEval){
+                        highestEval = curEval;
+                        bestMove = s;
+                    }
+                }
+            }
+            if(bestMove != null){
+                bestMove.card.TakeDamage(card.card.power, false);
+                card.TakeDamage(bestMove.card.card.power, true);
+            }
+            else{
+                StateMachine.AttackPlayerBase(card.card.power);
+                _playerBase.healthTxt.text = StateMachine.PlayerHealth.ToString();
+            }
+        }
+        else{
+            foreach (Slot s in StateMachine.CardsManager.playerSlots)
+            {
+                if(s.card != null){
+                    if(s.card.card.taunt){
+                        s.card.TakeDamage(card.card.power, false);
+                        card.TakeDamage(s.card.card.power, true);
+                        break;
+                    }
+                }
+            }
+        }
     }
     void AddCard(CardDisplay card){
         for(int i = 0; i < StateMachine.CardsManager.availableEnemySlots.Length; i++){
             if(StateMachine.CardsManager.availableEnemySlots[i]){
+                if(card.card.callback){
+                    StateMachine.CardsManager.Callback(false);
+                    if(StateMachine.PlayerTaunted){
+                        TauntPlayer.Invoke(false);
+                        StateMachine.TauntPlayer(false);
+                    }
+                }
                 card.inSlot = true;
                 StateMachine.CardsManager.enemySlots[i].card = card;
                 StateMachine.CardsManager.availableEnemySlots[i] = false;
@@ -98,6 +181,19 @@ public class EnemyTurnCardGameState : CardGameState
                 StateMachine.ChangeEnemyEnergy(-card.card.cost);
                 if(card.card.taunt){
                     TauntPlayer.Invoke(true);
+                    StateMachine.TauntPlayer(true);
+                }
+                if(card.card.rush){
+                    card.canAttack = true;
+                    if(card.card.dblStrike){
+                        card.canDblAttack = true;
+                    }
+                }
+                if(card.card.spray){
+                    StateMachine.CardsManager.Spray(true);
+                }
+                if(card.card.banish){
+                    StateMachine.CardsManager.Banish(true);
                 }
                 return;
             }
@@ -111,6 +207,7 @@ public class EnemyTurnCardGameState : CardGameState
                         StateMachine.CardsManager.availablePlayerSlots[i] = true;
                         if(card.card.taunt){
                             TauntEnemy.Invoke(false);
+                            StateMachine.TauntEnemy(false);
                         }
                         Destroy(card.gameObject);
                         return;
@@ -125,6 +222,7 @@ public class EnemyTurnCardGameState : CardGameState
                         StateMachine.CardsManager.availableEnemySlots[i] = true;
                         if(card.card.taunt){
                             TauntPlayer.Invoke(false);
+                            StateMachine.TauntPlayer(false);
                         }
                         Destroy(card.gameObject);
                         return;
