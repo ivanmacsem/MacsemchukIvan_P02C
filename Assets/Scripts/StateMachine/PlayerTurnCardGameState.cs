@@ -27,7 +27,7 @@ public class PlayerTurnCardGameState : CardGameState
 
         _enemyBase.interactable = true;
 
-        StateMachine.CardsManager.PlayerDrawCard();
+        StateMachine.CardsManager.PlayerDrawCard(false);
         StateMachine.IncreaseEnergy();
         StateMachine.ChangePlayerEnergy(StateMachine.EnergyProd);
         if(StateMachine.PlayerTaunted){

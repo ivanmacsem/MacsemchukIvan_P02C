@@ -8,9 +8,9 @@ public class SetupCardGameState : CardGameState
 
     public override void Enter(){
         StateMachine.CardsManager.CreateDecks(0, 2);
-        StateMachine.CardsManager.PlayerDrawCard();
-        StateMachine.CardsManager.PlayerDrawCard();
-        StateMachine.CardsManager.PlayerDrawCard();
+        StateMachine.CardsManager.PlayerDrawCard(true);
+        StateMachine.CardsManager.PlayerDrawCard(true);
+        StateMachine.CardsManager.PlayerDrawCard(true);
         StateMachine.CardsManager.EnemyDrawCard();
         StateMachine.CardsManager.EnemyDrawCard();
         StateMachine.CardsManager.EnemyDrawCard();

@@ -38,12 +38,13 @@ public class CardsManager : MonoBehaviour
     public bool playerTaunt = false;
     public bool enemyTaunt = false;
 
-    public void PlayerDrawCard(){
+    public void PlayerDrawCard(bool setup){
         if(playerDeck.Count >= 1){
             Card randCard = playerDeck[UnityEngine.Random.Range(0, playerDeck.Count)];
             cardPrefab.card = randCard;
             cardPrefab.isPlayer = true;
-            Instantiate(cardPrefab.gameObject, playerHand.transform);
+            GameObject newCard = Instantiate(cardPrefab.gameObject, playerHand.transform);
+            newCard.GetComponent<Draggable>().firstThree = setup;
             playerDeck.Remove(randCard);
             playerDeckCountTxt.text = "(" + playerDeck.Count + ")";
         }
