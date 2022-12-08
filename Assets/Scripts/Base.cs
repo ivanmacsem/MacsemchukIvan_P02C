@@ -9,10 +9,14 @@ public class Base : MonoBehaviour, IDropHandler
 {
     public event Action BaseAttacked;
     private Image baseImg;
+    public GameObject backgroundParent;
     private RectTransform rectTransform;
     public Text healthTxt;
+    public Text dmgText;
+    private int startingFont = 127;
     public bool interactable = false;
     public int dmg;
+    private bool takingDamage = false;
     private bool attackingMe = false;
     private bool expanding;
 
@@ -23,11 +27,9 @@ public class Base : MonoBehaviour, IDropHandler
         Draggable.endDragging += StopAttackingMe;
     }
     void AttackMe(){
-        Debug.Log("attackMyBase");
         attackingMe = true;
     }
     void StopAttackingMe(){
-        Debug.Log("DontAttackMyBase");
         attackingMe = false;
         rectTransform.localScale = new Vector3(1, 1, 1);
     }
@@ -52,11 +54,23 @@ public class Base : MonoBehaviour, IDropHandler
                 }
             }
         }
+        else if(takingDamage){
+            if(dmgText.fontSize > 100){
+                dmgText.fontSize -= 1;
+                backgroundParent.GetComponent<RectTransform>().anchoredPosition += new Vector2(Mathf.Sin(Time.time * 35f) * 2f, 0);
+            }
+            else{
+                takingDamage = false;
+                dmgText.gameObject.SetActive(false);
+            }
+        }
+
     }
 
     public void OnDrop(PointerEventData eventData){
         if(interactable){
-            if(eventData.pointerDrag !=null){
+            if(!eventData.pointerDrag.GetComponent<CardDisplay>().isTaunted){
+                TakeDmgAnimation(eventData.pointerDrag.GetComponent<CardDisplay>().card.power);
                 if(eventData.pointerDrag.GetComponent<CardDisplay>().canAttack){
                     dmg = eventData.pointerDrag.GetComponent<CardDisplay>().card.power;
                     eventData.pointerDrag.GetComponent<CardDisplay>().canAttack = false;
@@ -69,5 +83,11 @@ public class Base : MonoBehaviour, IDropHandler
                 }
             }
         }
+    }
+    public void TakeDmgAnimation(int dmg){
+        takingDamage = true;
+        dmgText.fontSize = startingFont;
+        dmgText.text = "-" + dmg;
+        dmgText.gameObject.SetActive(true);
     }
 }

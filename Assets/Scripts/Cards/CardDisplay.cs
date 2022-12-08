@@ -15,6 +15,8 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Text costText;
     public Text powerText;
     public Text healthText;
+    public Text dmgTakenText;
+    private int startingFont = 127;
 
     public Image background;
     [SerializeField] Image shieldImg;
@@ -38,6 +40,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private Vector2 attackDirection;
     private Vector2 startingPos;
     public bool attacking = false;
+    public bool takingDamage = false;
     public void Start()
     {
         nameText.text = card.name;
@@ -111,6 +114,12 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 }
             }
         }
+        else if(takingDamage){
+            if(dmgTakenText.fontSize>35){
+                dmgTakenText.fontSize -= 1;
+            }
+            rectTransform.anchoredPosition += new Vector2(Mathf.Sin(Time.time * 35f) * 2f, 0);
+        }
     }
     void OnEnable(){
         EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnd;
@@ -119,6 +128,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if(isPlayer){
             EnemyTurnCardGameState.TauntPlayer += OnTaunt;
             PlayerTurnCardGameState.TauntPlayer += OnTaunt;
+            Draggable.startDraggingTaunted += DontUseMe;
             Draggable.startDragging += DontUseMe;
             Draggable.endDragging += UseMe;
         }
@@ -127,6 +137,9 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             PlayerTurnCardGameState.TauntEnemy += OnTaunt;
             Draggable.startDragging += AttackMe;
             Draggable.endDragging += StopAttackingMe;
+            if(card.taunt){
+                Draggable.startDraggingTaunted += AttackMe;
+            }
         }
     }
     void OnDisable(){
@@ -136,6 +149,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if(isPlayer){
             EnemyTurnCardGameState.TauntPlayer -= OnTaunt;
             PlayerTurnCardGameState.TauntPlayer -= OnTaunt;
+            Draggable.startDraggingTaunted -= DontUseMe;
             Draggable.startDragging -= DontUseMe;
             Draggable.endDragging -= UseMe;
         }
@@ -144,6 +158,9 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             PlayerTurnCardGameState.TauntEnemy -= OnTaunt;
             Draggable.startDragging -= AttackMe;
             Draggable.endDragging -= StopAttackingMe;
+            if(card.taunt){
+                Draggable.startDraggingTaunted -= AttackMe;
+            }
         }
     }
     void OnEnemyTurnEnd(){
@@ -224,13 +241,13 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if((!eventData.pointerDrag.GetComponent<CardDisplay>().isTaunted) || (eventData.pointerDrag.GetComponent<CardDisplay>().isTaunted && card.taunt)){
             if(!isPlayer && inSlot){
                 if(eventData.pointerDrag.GetComponent<CardDisplay>().canAttack){
-                    this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, false); 
-                    eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, true);
+                    StartCoroutine(this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, false)); 
+                    StartCoroutine(eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, true));
                     eventData.pointerDrag.GetComponent<CardDisplay>().canAttack = false;
                 }
                 else if(eventData.pointerDrag.GetComponent<CardDisplay>().canDblAttack){
-                    this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, false);
-                    eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, true);
+                    StartCoroutine(this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, false));
+                    StartCoroutine(eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, true));
                     eventData.pointerDrag.GetComponent<CardDisplay>().canDblAttack = false;
                 }
             }
@@ -249,15 +266,22 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         } while ( attacking );
     }
 
-    public void TakeDamage(int dmg, bool attacking){
+    public IEnumerator TakeDamage(int dmg, bool attacking){
         if(!(attacking && card.ranged)){
             if(!isShielded){
                 currHP -= dmg;
+                dmgTakenText.fontSize = startingFont;
+                dmgTakenText.gameObject.SetActive(true);
+                dmgTakenText.text = "-" + dmg;
             }
             else{
                 shieldImg.gameObject.SetActive(false);
                 isShielded = false;
             }
+            takingDamage = true;
+            yield return new WaitForSeconds(0.5f);
+            takingDamage = false;
+            dmgTakenText.gameObject.SetActive(false);
         }
         if(currHP <= 0){
             if(dmg > 10){

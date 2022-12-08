@@ -143,12 +143,13 @@ public class EnemyTurnCardGameState : CardGameState
             }
             if(bestMove != null){
                 yield return card.AttackAnimation(bestMove.card.gameObject.GetComponent<RectTransform>());
-                bestMove.card.TakeDamage(card.card.power, false);
-                card.TakeDamage(bestMove.card.card.power, true);
+                StartCoroutine(bestMove.card.TakeDamage(card.card.power, false));
+                StartCoroutine(card.TakeDamage(bestMove.card.card.power, true));
             }
             else{
                 yield return card.AttackAnimation(_playerBase.gameObject.GetComponent<RectTransform>());
                 StateMachine.AttackPlayerBase(card.card.power);
+                _playerBase.TakeDmgAnimation(card.card.power);
                 _playerBase.healthTxt.text = StateMachine.PlayerHealth.ToString();
             }
         }
@@ -157,8 +158,8 @@ public class EnemyTurnCardGameState : CardGameState
             {
                 if(s.card != null){
                     if(s.card.card.taunt){
-                        s.card.TakeDamage(card.card.power, false);
-                        card.TakeDamage(s.card.card.power, true);
+                        StartCoroutine(s.card.TakeDamage(card.card.power, false));
+                        StartCoroutine(card.TakeDamage(s.card.card.power, true));
                         break;
                     }
                 }

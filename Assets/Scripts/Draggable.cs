@@ -9,6 +9,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
 {
     [SerializeField] private Canvas canvas;
     public static event Action startDragging = delegate { };
+    public static event Action startDraggingTaunted = delegate{ };
     public static event Action endDragging = delegate { };
     private RectTransform rectTransform;
     private Vector2 startingPos;
@@ -100,7 +101,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
             canvasGroup.blocksRaycasts = false;
             startingPos = rectTransform.anchoredPosition;
             if(card.inSlot){
-                startDragging?.Invoke();
+                if(!card.isTaunted){
+                    startDragging?.Invoke();
+                }
+                else{
+                    startDraggingTaunted?.Invoke();
+                }
                 startingSlot = rectTransform.localPosition;
                 rectTransform.SetAsLastSibling();
                 target.SetActive(true);

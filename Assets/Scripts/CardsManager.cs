@@ -73,14 +73,14 @@ public class CardsManager : MonoBehaviour
         if(player){
             for(int i = 0; i<playerSlots.Count; i++){
                 if(playerSlots[i].card != null){
-                    playerSlots[i].card.TakeDamage(1, false);
+                    StartCoroutine(playerSlots[i].card.TakeDamage(1, false));
                 }
             }
         }
         else{
             for(int i = 0; i<enemySlots.Count; i++){
                 if(enemySlots[i].card != null){
-                    enemySlots[i].card.TakeDamage(1, false);
+                    StartCoroutine(enemySlots[i].card.TakeDamage(1, false));
                 }
             }
         }
@@ -94,7 +94,7 @@ public class CardsManager : MonoBehaviour
                     inSlots.Add(i);
                 }
             }
-            playerSlots[inSlots[UnityEngine.Random.Range(0, inSlots.Count-1)]].card.TakeDamage(99, false);
+            StartCoroutine(playerSlots[inSlots[UnityEngine.Random.Range(0, inSlots.Count-1)]].card.TakeDamage(99, false));
         }
         else{
             for(int i = 0; i<enemySlots.Count; i++){
@@ -102,7 +102,7 @@ public class CardsManager : MonoBehaviour
                     inSlots.Add(i);
                 }
             }
-            enemySlots[inSlots[UnityEngine.Random.Range(0, inSlots.Count-1)]].card.TakeDamage(99, false);
+            StartCoroutine(enemySlots[inSlots[UnityEngine.Random.Range(0, inSlots.Count-1)]].card.TakeDamage(99, false));
         }
     }
 
