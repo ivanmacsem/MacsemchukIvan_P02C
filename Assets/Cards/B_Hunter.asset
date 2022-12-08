@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: B_Hunter
   m_EditorClassIdentifier: 
   name: Hunter
-  tribeIcon: {fileID: 0}
+  tribeIcon: {fileID: 21300000, guid: 47e5ffc9f85f83a4fab6d8f103ed7141, type: 3}
   color: {r: 0.27450982, g: 0.3647059, b: 0.65882355, a: 1}
   traits:
   - {fileID: 11400000, guid: 8ba87bb56fee8024b83b0e35c989a5a7, type: 2}
@@ -21,3 +21,11 @@ MonoBehaviour:
   cost: 6
   power: 2
   health: 3
+  dblStrike: 0
+  shield: 0
+  banish: 0
+  callback: 0
+  ranged: 1
+  rush: 1
+  spray: 0
+  taunt: 0

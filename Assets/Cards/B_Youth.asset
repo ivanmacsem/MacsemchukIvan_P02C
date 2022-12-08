@@ -13,10 +13,18 @@ MonoBehaviour:
   m_Name: B_Youth
   m_EditorClassIdentifier: 
   name: Youth
-  tribeIcon: {fileID: 0}
+  tribeIcon: {fileID: 21300000, guid: 9a18b9ea743afc94aab1cfeb63c6bad9, type: 3}
   color: {r: 0.27450982, g: 0.3647059, b: 0.65882355, a: 1}
   traits:
   - {fileID: 11400000, guid: 8ba87bb56fee8024b83b0e35c989a5a7, type: 2}
   cost: 2
   power: 3
   health: 1
+  dblStrike: 0
+  shield: 0
+  banish: 0
+  callback: 0
+  ranged: 0
+  rush: 1
+  spray: 0
+  taunt: 0

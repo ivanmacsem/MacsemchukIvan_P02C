@@ -13,10 +13,18 @@ MonoBehaviour:
   m_Name: R_Guard
   m_EditorClassIdentifier: 
   name: Guard
-  tribeIcon: {fileID: 0}
+  tribeIcon: {fileID: 21300000, guid: d4fbd58df0c77ed4f8b7d69913618986, type: 3}
   color: {r: 0.8980393, g: 0.30980393, b: 0.28627452, a: 1}
   traits:
   - {fileID: 11400000, guid: 9d82b136d5fb8b844b742d0fe10ebfcd, type: 2}
   cost: 3
   power: 2
   health: 2
+  dblStrike: 0
+  shield: 1
+  banish: 0
+  callback: 0
+  ranged: 0
+  rush: 0
+  spray: 0
+  taunt: 0

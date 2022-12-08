@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Shield
   description: This card ignores the first damage taken including from Spray and
     Banish
-  icon: {fileID: 21300000, guid: d56c29248ec3a6349a1bf7f0810b2538, type: 3}
+  icon: {fileID: 21300000, guid: bbc02a69278d8f34e945666725b55ade, type: 3}

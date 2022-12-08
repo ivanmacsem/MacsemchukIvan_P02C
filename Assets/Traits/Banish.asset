@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Banish
   description: Eliminate a random enemy card when played
-  icon: {fileID: 21300000, guid: 2f0e6e04962499f4793c4adbff7a99d4, type: 3}
+  icon: {fileID: 21300000, guid: 12d561717d7a0b543996cc822950076f, type: 3}

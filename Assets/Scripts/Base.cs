@@ -9,14 +9,12 @@ public class Base : MonoBehaviour, IDropHandler
 {
     public event Action BaseAttacked;
     private Image baseImg;
-    public Color color;
     public Text healthTxt;
     public bool interactable = false;
     public int dmg;
 
     void Start(){
         baseImg = GetComponent<Image>();
-        baseImg.color = color;
     }
 
     public void OnDrop(PointerEventData eventData){

@@ -42,7 +42,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         powerText.text = card.power.ToString();
         healthText.text = card.health.ToString();
         currHP = card.health;
-        background.color = card.color;
+        background.sprite = card.tribeIcon;
         if(card.traits.Count == 1){
             trait2.gameObject.SetActive(false);
             trait1.trait = card.traits[0];

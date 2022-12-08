@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: B_Guard
   m_EditorClassIdentifier: 
   name: Guard
-  tribeIcon: {fileID: 0}
+  tribeIcon: {fileID: 21300000, guid: d4fbd58df0c77ed4f8b7d69913618986, type: 3}
   color: {r: 0.27450982, g: 0.3647059, b: 0.65882355, a: 1}
   traits:
   - {fileID: 11400000, guid: 9d82b136d5fb8b844b742d0fe10ebfcd, type: 2}

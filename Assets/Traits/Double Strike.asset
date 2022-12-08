@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Double Strike
   description: This card can attack twice in the same turn
-  icon: {fileID: 21300000, guid: cb9e8f6882955b64eb610d6b1ca92b94, type: 3}
+  icon: {fileID: 21300000, guid: 442f460bb8d3bba45ba4afed3f0adfdd, type: 3}
