@@ -12,6 +12,12 @@ public class PlayerTurnCardGameState : CardGameState
     [SerializeField] Base _enemyBase = null;
     public static event Action<bool> TauntPlayer;
     public static event Action<bool> TauntEnemy;
+    [SerializeField] AudioClip explosionClip;
+    [SerializeField] AudioClip slashClip;
+    [SerializeField] AudioClip hitClip;
+    [SerializeField] AudioClip changeTurn;
+    [SerializeField] AudioClip cardDealt;
+    [SerializeField] AudioClip cardPlayed;
 
     private Color faded;
 
@@ -28,6 +34,7 @@ public class PlayerTurnCardGameState : CardGameState
         _enemyBase.interactable = true;
 
         StateMachine.CardsManager.PlayerDrawCard(false);
+        StateMachine.PlayTrack(cardDealt);
         StateMachine.IncreaseEnergy();
         StateMachine.ChangePlayerEnergy(StateMachine.EnergyProd);
         if(StateMachine.PlayerTaunted){
@@ -41,6 +48,7 @@ public class PlayerTurnCardGameState : CardGameState
         _enemyBase.BaseAttacked += AttackEnemy;
         Slot.drop += OnDrop;
         CardDisplay.destroyed += OnDestroyed;
+        CardDisplay.cardDmg += OnDamaged;
     }
 
     public override void Tick()
@@ -57,6 +65,7 @@ public class PlayerTurnCardGameState : CardGameState
 
     public override void Exit()
     {
+        StateMachine.PlayTrack(changeTurn);
         _playerTurnUI.SetActive(false);
         StateMachine.Input.PressedEndTurn -= OnPressedEndTurn;
         _enemyBase.BaseAttacked -= AttackEnemy;
@@ -64,6 +73,7 @@ public class PlayerTurnCardGameState : CardGameState
 
         _enemyBase.interactable = false;
         CardDisplay.destroyed -= OnDestroyed;
+        CardDisplay.cardDmg -= OnDamaged;
 
         Debug.Log("Player Turn: Exit");
     }
@@ -91,6 +101,7 @@ public class PlayerTurnCardGameState : CardGameState
             card.GetComponent<RectTransform>().SetParent(s.parent);
             card.GetComponent<RectTransform>().localPosition = s.GetComponent<RectTransform>().localPosition;
             StateMachine.ChangePlayerEnergy(-card.card.cost);
+            StateMachine.PlayTrack(cardPlayed);
             if(card.card.taunt){
                 TauntEnemy.Invoke(true);
             }
@@ -109,6 +120,9 @@ public class PlayerTurnCardGameState : CardGameState
             
         }
     }
+    void OnDamaged(){
+        StateMachine.PlayTrack(hitClip);
+    }
     void OnDestroyed(CardDisplay card, bool banished){
         if(card.isPlayer){
             for(int i = 0; i < StateMachine.CardsManager.playerSlots.Count; i++){
@@ -120,10 +134,12 @@ public class PlayerTurnCardGameState : CardGameState
                         }
                         Destroy(card.gameObject);
                         if(!banished){
+                            StateMachine.PlayTrack(slashClip);
                             GameObject slashInst = Instantiate(StateMachine.slashPrefab, card.GetComponent<RectTransform>().parent);
                             slashInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         }
                         else{
+                            StateMachine.PlayTrack(explosionClip);
                             GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
                             explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         }
@@ -142,10 +158,12 @@ public class PlayerTurnCardGameState : CardGameState
                         }
                         Destroy(card.gameObject);
                         if(!banished){
+                            StateMachine.PlayTrack(slashClip);
                             GameObject slashInst = Instantiate(StateMachine.slashPrefab, card.GetComponent<RectTransform>().parent);
                             slashInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         }
                         else{
+                            StateMachine.PlayTrack(explosionClip);
                             GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
                             explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         }

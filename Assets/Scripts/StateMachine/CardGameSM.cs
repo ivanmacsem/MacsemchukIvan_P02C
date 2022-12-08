@@ -8,7 +8,8 @@ public class CardGameSM : StateMachine
     public InputController Input => _input;
     [SerializeField] CardsManager _cardsManager;
     public CardsManager CardsManager => _cardsManager;
-
+    [SerializeField] AudioSource _audioManager;
+    public AudioSource AudioManager => _audioManager;
     [SerializeField] int _playerHealth;
     public int PlayerHealth => _playerHealth;
     [SerializeField] int _enemyHealth;
@@ -25,6 +26,9 @@ public class CardGameSM : StateMachine
     public bool EnemyTaunted => _enemyTaunted;
     public GameObject slashPrefab;
     public GameObject explosionPrefab;
+    [SerializeField] AudioClip baseHit;
+    [SerializeField] AudioClip winClip;
+    [SerializeField] AudioClip loseClip;
 
     void Start()
     {
@@ -35,9 +39,11 @@ public class CardGameSM : StateMachine
     }
     public void AttackEnemy(int dmg){
         _enemyHealth -= dmg;
+        PlayTrack(baseHit);
     }
     public void AttackPlayerBase(int dmg){
         _playerHealth -= dmg;
+        PlayTrack(baseHit);
     }
     public void TauntPlayer(bool taunted){
         _playerTaunted = taunted;
@@ -56,5 +62,16 @@ public class CardGameSM : StateMachine
         if(_enemyEnergy > 9){
             _enemyEnergy = 9;
         }
+    }
+    public void PlayTrack(AudioClip clip){
+        _audioManager.PlayOneShot(clip);
+    }
+    public void Win(){
+        _audioManager.Stop();
+        _audioManager.PlayOneShot(winClip);
+    }
+    public void Lose(){
+        _audioManager.Stop();
+        _audioManager.PlayOneShot(loseClip);
     }
 }

@@ -10,5 +10,6 @@ public class PlayerLoseCardGameState : CardGameState
         Debug.Log("Lose: Enter");
         StopAllCoroutines();
         _loseScreenUI.SetActive(true);
+        StateMachine.Lose();
     }
 }

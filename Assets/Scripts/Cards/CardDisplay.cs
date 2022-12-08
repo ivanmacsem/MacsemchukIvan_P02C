@@ -11,6 +11,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private RectTransform rectTransform;
     public static event Action<CardDisplay> zoomCard = delegate { };
     public static event Action<CardDisplay, bool> destroyed = delegate { };
+    public static event Action cardDmg = delegate { };
     public Text nameText;
     public Text costText;
     public Text powerText;
@@ -279,6 +280,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 isShielded = false;
             }
             takingDamage = true;
+            cardDmg?.Invoke();
             yield return new WaitForSeconds(0.5f);
             takingDamage = false;
             dmgTakenText.gameObject.SetActive(false);

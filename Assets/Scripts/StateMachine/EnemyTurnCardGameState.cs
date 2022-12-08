@@ -17,6 +17,11 @@ public class EnemyTurnCardGameState : CardGameState
     [SerializeField] float _pauseDuration = 1.5f;
     [SerializeField] Base _playerBase = null;
     private Color faded;
+    [SerializeField] AudioClip explosionClip;
+    [SerializeField] AudioClip slashClip;
+    [SerializeField] AudioClip hitClip;
+    [SerializeField] AudioClip changeTurn;
+    [SerializeField] AudioClip cardPlayed;
     void Start(){
         faded = _enemyTurnTextUI.color;
     }
@@ -35,6 +40,7 @@ public class EnemyTurnCardGameState : CardGameState
         }
 
         CardDisplay.destroyed += OnDestroyed;
+        CardDisplay.cardDmg += OnDamaged;
 
         _playerBase.interactable = true;
         StateMachine.ChangeEnemyEnergy(StateMachine.EnergyProd);
@@ -56,11 +62,13 @@ public class EnemyTurnCardGameState : CardGameState
 
     public override void Exit()
     {
+        StateMachine.PlayTrack(changeTurn);
         Debug.Log("Enemy Turn: Exit");
         _enemyTurnUI.SetActive(false);
         _playerBase.interactable = false;
 
         CardDisplay.destroyed -= OnDestroyed;
+        CardDisplay.cardDmg -= OnDamaged;
     }
 
     IEnumerator EnemyThinkingRoutine(float pauseDuration){
@@ -182,6 +190,7 @@ public class EnemyTurnCardGameState : CardGameState
                 card.GetComponent<RectTransform>().SetParent(StateMachine.CardsManager.enemySlots[i].parent);
                 card.GetComponent<RectTransform>().localPosition = StateMachine.CardsManager.enemySlots[i].GetComponent<RectTransform>().localPosition;
                 StateMachine.ChangeEnemyEnergy(-card.card.cost);
+                StateMachine.PlayTrack(cardPlayed);
                 if(card.card.taunt){
                     TauntPlayer.Invoke(true);
                     StateMachine.TauntPlayer(true);
@@ -202,6 +211,9 @@ public class EnemyTurnCardGameState : CardGameState
             }
         }
     }
+    void OnDamaged(){
+        StateMachine.PlayTrack(hitClip);
+    }
     void OnDestroyed(CardDisplay card, bool banished){
         if(card.isPlayer){
             for(int i = 0; i < StateMachine.CardsManager.playerSlots.Count; i++){
@@ -214,10 +226,12 @@ public class EnemyTurnCardGameState : CardGameState
                         }
                         Destroy(card.gameObject);
                         if(!banished){
+                            StateMachine.PlayTrack(slashClip);
                             GameObject slashInst = Instantiate(StateMachine.slashPrefab, card.GetComponent<RectTransform>().parent);
                             slashInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         }
                         else{
+                            StateMachine.PlayTrack(explosionClip);
                             GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
                             explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         }
@@ -237,10 +251,12 @@ public class EnemyTurnCardGameState : CardGameState
                         }
                         Destroy(card.gameObject);
                         if(!banished){
+                            StateMachine.PlayTrack(slashClip);
                             GameObject slashInst = Instantiate(StateMachine.slashPrefab, card.GetComponent<RectTransform>().parent);
                             slashInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         }
                         else{
+                            StateMachine.PlayTrack(explosionClip);
                             GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
                             explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         }

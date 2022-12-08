@@ -10,5 +10,6 @@ public class PlayerWinCardGameState : CardGameState
         Debug.Log("Win: Enter");
         StopAllCoroutines();
         _winScreenUI.SetActive(true);
+        StateMachine.Win();
     }
 }

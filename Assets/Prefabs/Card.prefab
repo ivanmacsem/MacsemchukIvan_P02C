@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64be6dff056920747ab3f550dc41c509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: b2239de7f0a94c84b8ee117d000eef78, type: 2}
+  card: {fileID: 11400000, guid: 5913886a574517f458ebbfa540f30a40, type: 2}
   nameText: {fileID: 3459207906689856248}
   costText: {fileID: 3459207906890560098}
   powerText: {fileID: 3459207904957701682}
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   startingSlot: {x: 0, y: 0}
-  worldCenter: {x: 1100, y: 640}
+  worldCenter: {x: 970, y: 670}
   target: {fileID: 2003328672959860622}
   firstThree: 1
   attacking: 0
