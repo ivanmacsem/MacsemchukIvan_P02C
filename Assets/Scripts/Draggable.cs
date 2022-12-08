@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
-
+    public static event Action startDragging = delegate { };
+    public static event Action endDragging = delegate { };
     private RectTransform rectTransform;
     private Vector2 startingPos;
     public Vector2 startingSlot;
@@ -72,11 +74,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
     private void OnEnable(){
         EnemyTurnCardGameState.EnemyTurnBegan += OnEnemyTurnBegin;
         EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnded;
+        CardDisplay.destroyed += OnCardDestroyed;
     }
 
     private void OnDisable(){
         EnemyTurnCardGameState.EnemyTurnBegan -= OnEnemyTurnBegin;
         EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnEnded;
+        CardDisplay.destroyed -= OnCardDestroyed;
     }
 
     private void OnEnemyTurnBegin(){
@@ -86,6 +90,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
     private void OnEnemyTurnEnded(){
         interactable = true;
     }
+    private void OnCardDestroyed(CardDisplay card, bool banished){
+        endDragging?.Invoke();
+    }
 
     public void OnBeginDrag(PointerEventData eventData){
         if(interactable){
@@ -93,6 +100,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
             canvasGroup.blocksRaycasts = false;
             startingPos = rectTransform.anchoredPosition;
             if(card.inSlot){
+                startDragging?.Invoke();
                 startingSlot = rectTransform.localPosition;
                 rectTransform.SetAsLastSibling();
                 target.SetActive(true);
@@ -127,6 +135,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
                 rectTransform.anchoredPosition = startingPos;
             }
             else{
+                endDragging?.Invoke();
                 target.SetActive(false);
             }
             gameObject.layer = 5;

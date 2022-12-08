@@ -31,6 +31,9 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public bool isShielded = false;
     public bool hasShielded = false;
     public bool isTaunted = false;
+    private bool attackingMe;
+    private bool expanding;
+    private bool useMe = false;
     private RectTransform toAttack;
     private Vector2 attackDirection;
     private Vector2 startingPos;
@@ -62,14 +65,20 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         isShielded = card.shield;
         shieldImg.gameObject.SetActive(isShielded);
         tauntImg.gameObject.SetActive(card.taunt);
+        if(!isPlayer){
+            borderImg.color = Color.red;
+        }
     }
     public void Update(){
         healthText.text = currHP.ToString();
-        if(canAttack || canDblAttack){
-            borderImg.color = Color.white;
-        }
-        else{
-            borderImg.color = Color.grey;
+        if(isPlayer){
+            if(canAttack || canDblAttack){
+                borderImg.color = Color.white;
+            }
+            else{
+                useMe = false;
+                borderImg.color = Color.grey;
+            }
         }
         if(attacking){
             Vector2 worldPos = new Vector2(1100, 640) + rectTransform.anchoredPosition;
@@ -81,46 +90,112 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             }
         }
     }
+    void FixedUpdate(){
+        if((!isPlayer && inSlot && attackingMe) || useMe){
+            if(rectTransform.localScale.x < 1.05f && rectTransform.localScale.x > 0.95f){
+                if(expanding){
+                    rectTransform.localScale += new Vector3(Time.deltaTime*0.25f, Time.deltaTime*0.25f, 0);
+                }
+                else{
+                    rectTransform.localScale -= new Vector3(Time.deltaTime*0.25f, Time.deltaTime*0.25f, 0);
+                }
+            }
+            else{
+                if(expanding){
+                    rectTransform.localScale -= new Vector3(Time.deltaTime*0.25f, Time.deltaTime*0.25f, 0);
+                    expanding = false;
+                }
+                else{
+                    rectTransform.localScale += new Vector3(Time.deltaTime*0.25f, Time.deltaTime*0.25f, 0);
+                    expanding = true;
+                }
+            }
+        }
+    }
     void OnEnable(){
         EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnd;
-        EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnBegin;
+        EnemyTurnCardGameState.EnemyTurnBegan += OnEnemyTurnBegin;
 
         if(isPlayer){
             EnemyTurnCardGameState.TauntPlayer += OnTaunt;
             PlayerTurnCardGameState.TauntPlayer += OnTaunt;
+            Draggable.startDragging += DontUseMe;
+            Draggable.endDragging += UseMe;
         }
         else{
             EnemyTurnCardGameState.TauntEnemy += OnTaunt;
             PlayerTurnCardGameState.TauntEnemy += OnTaunt;
+            Draggable.startDragging += AttackMe;
+            Draggable.endDragging += StopAttackingMe;
         }
     }
     void OnDisable(){
         EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnEnd;
-        EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnBegin;
+        EnemyTurnCardGameState.EnemyTurnBegan -= OnEnemyTurnBegin;
 
         if(isPlayer){
             EnemyTurnCardGameState.TauntPlayer -= OnTaunt;
             PlayerTurnCardGameState.TauntPlayer -= OnTaunt;
+            Draggable.startDragging -= DontUseMe;
+            Draggable.endDragging -= UseMe;
         }
         else{
             EnemyTurnCardGameState.TauntEnemy -= OnTaunt;
             PlayerTurnCardGameState.TauntEnemy -= OnTaunt;
+            Draggable.startDragging -= AttackMe;
+            Draggable.endDragging -= StopAttackingMe;
         }
     }
     void OnEnemyTurnEnd(){
         if(inSlot){
-            canAttack = true;
-            if(card.dblStrike){
-                canDblAttack = true;
+            if(isPlayer){
+                canAttack = true;
+                if(card.dblStrike){
+                    canDblAttack = true;
+                }
+                useMe = true;
+            }
+            else{
+                canAttack = false;
+                if(card.dblStrike){
+                    canDblAttack = false;
+                }
             }
         }
     }
     void OnEnemyTurnBegin(){
         if(inSlot){
-            canAttack = true;
-            if(card.dblStrike){
-                canDblAttack = true;
+            if(!isPlayer){
+                canAttack = true;
+                if(card.dblStrike){
+                    canDblAttack = true;
+                }
+                useMe = false;
             }
+            else{
+                canAttack = false;
+                if(card.dblStrike){
+                    canDblAttack = false;
+                }
+            }
+        }
+    }
+    void AttackMe(){
+        attackingMe = true;
+    }
+    void StopAttackingMe(){
+        attackingMe = false;
+        rectTransform.localScale = new Vector3(1, 1, 1);
+        expanding = true;
+    }
+    void DontUseMe(){
+        useMe = false;
+        rectTransform.localScale = new Vector3(1, 1, 1);
+        expanding = true;
+    }
+    void UseMe(){
+        if(canAttack || canDblAttack){
+            useMe = true;
         }
     }
     void OnTaunt(bool taunted){
@@ -147,7 +222,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnDrop(PointerEventData eventData)
     {
         if((!eventData.pointerDrag.GetComponent<CardDisplay>().isTaunted) || (eventData.pointerDrag.GetComponent<CardDisplay>().isTaunted && card.taunt)){
-            if(!isPlayer){
+            if(!isPlayer && inSlot){
                 if(eventData.pointerDrag.GetComponent<CardDisplay>().canAttack){
                     this.TakeDamage(eventData.pointerDrag.GetComponent<CardDisplay>().card.power, false); 
                     eventData.pointerDrag.GetComponent<CardDisplay>().TakeDamage(card.power, true);

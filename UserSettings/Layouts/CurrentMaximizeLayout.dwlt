@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 46693
+  controlID: 53918
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 46694
+  controlID: 53919
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 46695
+  controlID: 53920
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,9 +226,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 30cf0100
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2efbffffa46b0000ce6b0000746c0000e66c0000f06c0000f86c0000
+      m_ExpandedIDs: 8630f9ff1862f9ff2efbffffa46b0000ce6b0000746c0000e66c0000f06c0000f86c00003c5a0200465a0200505a0200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -526,9 +526,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 526.0809, y: 252.29619, z: 51.034763}
+    m_Target: {x: 566.8723, y: 266.1164, z: 49.97264}
     speed: 2
-    m_Value: {x: 526.0809, y: 252.29619, z: 51.034763}
+    m_Value: {x: 566.8723, y: 266.1164, z: 49.97264}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -579,9 +579,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 377.73056
+    m_Target: 410.8223
     speed: 2
-    m_Value: 377.73056
+    m_Value: 410.8223
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -675,21 +675,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Workspaces\Unity\SFG2\Project 2\MacsemchukIvan_P02C
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: 4c700000
-    m_LastClickedID: 28748
+    m_SelectedIDs: 4e700000
+    m_LastClickedID: 28750
     m_ExpandedIDs: 00000000a86e0000aa6e0000ac6e0000ae6e0000b06e0000b26e0000b46e0000b66e0000b86e0000ba6e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -743,8 +743,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 30cf0100
-    m_LastClickedInstanceID: 118576
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300000000000068970000226d01009e7501002a7a0100247a010002b60100
     m_RenameOverlay:
@@ -832,7 +832,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 95768
+  m_LastSelectedObjectID: 136972
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
