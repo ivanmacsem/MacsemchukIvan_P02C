@@ -201,7 +201,7 @@ public class EnemyTurnCardGameState : CardGameState
             }
         }
     }
-    void OnDestroyed(CardDisplay card){
+    void OnDestroyed(CardDisplay card, bool banished){
         if(card.isPlayer){
             for(int i = 0; i < StateMachine.CardsManager.playerSlots.Count; i++){
                 if(StateMachine.CardsManager.playerSlots[i] != null){
@@ -212,8 +212,14 @@ public class EnemyTurnCardGameState : CardGameState
                             StateMachine.TauntEnemy(false);
                         }
                         Destroy(card.gameObject);
-                        GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
-                        explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
+                        if(!banished){
+                            GameObject slashInst = Instantiate(StateMachine.slashPrefab, card.GetComponent<RectTransform>().parent);
+                            slashInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
+                        }
+                        else{
+                            GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
+                            explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
+                        }
                         return;
                     }
                 }
@@ -229,8 +235,14 @@ public class EnemyTurnCardGameState : CardGameState
                             StateMachine.TauntPlayer(false);
                         }
                         Destroy(card.gameObject);
-                        GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
-                        explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
+                        if(!banished){
+                            GameObject slashInst = Instantiate(StateMachine.slashPrefab, card.GetComponent<RectTransform>().parent);
+                            slashInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
+                        }
+                        else{
+                            GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
+                            explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
+                        }
                         return;
                     }
                 }

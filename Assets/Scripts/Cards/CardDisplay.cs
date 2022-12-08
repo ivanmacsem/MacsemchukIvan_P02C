@@ -10,7 +10,7 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Card card;
     private RectTransform rectTransform;
     public static event Action<CardDisplay> zoomCard = delegate { };
-    public static event Action<CardDisplay> destroyed = delegate { };
+    public static event Action<CardDisplay, bool> destroyed = delegate { };
     public Text nameText;
     public Text costText;
     public Text powerText;
@@ -185,7 +185,12 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             }
         }
         if(currHP <= 0){
-            destroyed?.Invoke(this);
+            if(dmg > 10){
+                destroyed?.Invoke(this, true);
+            }
+            else{
+                destroyed?.Invoke(this, false);
+            }
         }
     }
 }

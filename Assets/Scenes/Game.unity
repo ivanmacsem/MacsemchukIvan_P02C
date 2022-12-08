@@ -3589,7 +3589,8 @@ MonoBehaviour:
   _playerEnergy: 0
   _enemyEnergy: 0
   _energyProd: 2
-  explosionPrefab: {fileID: 2218295389860114587, guid: 0863522e272de8d458bedd8aacefb14f, type: 3}
+  slashPrefab: {fileID: 2218295389860114587, guid: 0863522e272de8d458bedd8aacefb14f, type: 3}
+  explosionPrefab: {fileID: 2218295389860114587, guid: eece7d302115c7b47b3ca933954cb7df, type: 3}
 --- !u!114 &1565859208
 MonoBehaviour:
   m_ObjectHideFlags: 0
