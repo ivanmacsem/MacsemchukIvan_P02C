@@ -23,6 +23,7 @@ public class CardGameSM : StateMachine
     public bool PlayerTaunted => _playerTaunted;
     private bool _enemyTaunted = false;
     public bool EnemyTaunted => _enemyTaunted;
+    public GameObject explosionPrefab;
 
     void Start()
     {

@@ -80,10 +80,10 @@ public class EnemyTurnCardGameState : CardGameState
         foreach(Slot slot in StateMachine.CardsManager.enemySlots){
             if(slot.card != null && slot.card.canAttack){
                 yield return new WaitForSeconds(pauseDuration);
-                AttackPlayer(slot.card);
+                StartCoroutine(AttackPlayer(slot.card));
                 slot.card.canAttack = false;
                 if(slot.card.canDblAttack){
-                    AttackPlayer(slot.card);
+                    StartCoroutine(AttackPlayer(slot.card));
                     slot.card.canDblAttack = false;
                 }
                 yield return new WaitForSeconds(pauseDuration);
@@ -95,7 +95,7 @@ public class EnemyTurnCardGameState : CardGameState
         }
     }
 
-    void AttackPlayer(CardDisplay card){
+    IEnumerator AttackPlayer(CardDisplay card){
         if(!StateMachine.EnemyTaunted){
             int highestEval = card.card.power;
             Slot bestMove = null;
@@ -142,10 +142,12 @@ public class EnemyTurnCardGameState : CardGameState
                 }
             }
             if(bestMove != null){
+                yield return card.AttackAnimation(bestMove.card.gameObject.GetComponent<RectTransform>());
                 bestMove.card.TakeDamage(card.card.power, false);
                 card.TakeDamage(bestMove.card.card.power, true);
             }
             else{
+                yield return card.AttackAnimation(_playerBase.gameObject.GetComponent<RectTransform>());
                 StateMachine.AttackPlayerBase(card.card.power);
                 _playerBase.healthTxt.text = StateMachine.PlayerHealth.ToString();
             }
@@ -210,6 +212,8 @@ public class EnemyTurnCardGameState : CardGameState
                             StateMachine.TauntEnemy(false);
                         }
                         Destroy(card.gameObject);
+                        GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
+                        explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         return;
                     }
                 }
@@ -225,6 +229,8 @@ public class EnemyTurnCardGameState : CardGameState
                             StateMachine.TauntPlayer(false);
                         }
                         Destroy(card.gameObject);
+                        GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
+                        explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         return;
                     }
                 }

@@ -1,0 +1,1308 @@
+fileFormatVersion: 2
+guid: cc6d9f785e8e34848b40c30d4c2ab450
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 555
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 134632c2dc98a074bb830044e5ae9147
+      internalID: 285728913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_1
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 555
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2382d5e77fcbed4cad8749d5707966e
+      internalID: 1916950141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_2
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 554
+        width: 59
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4155f19c8c485c4488bb89aa5ecb8b7
+      internalID: 2132780225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_3
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 554
+        width: 59
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e0af44791ca02f47ac61730d49b8c7b
+      internalID: -1724577217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_4
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 554
+        width: 60
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 325fef30fbcb057418f96ee0086bf89a
+      internalID: -648818619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_5
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 554
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 008b7c450f7db3e4586bb2f839782f0b
+      internalID: 1314955810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_6
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 554
+        width: 60
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3691281fa517e1478eaed3e68baf8b9
+      internalID: 1170844620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_7
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 554
+        width: 64
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 053ca56096bdeea43a3d44a3012b6592
+      internalID: -1678836898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_8
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 452
+        width: 68
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3e37d722f899944c9a355664bcc8a15
+      internalID: 554838569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_9
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 450
+        width: 72
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c08f9031c6524e47bfb02bbe301a8c0
+      internalID: 1363321361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_10
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 449
+        width: 75
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 208cf99defaac094697c6a9509531d2a
+      internalID: -1009570422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_11
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 447
+        width: 78
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ff4d254723e0f1428244f82c653ae0f
+      internalID: 881805514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_12
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 446
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5c3f90670cb27d43b20def3ccc38268
+      internalID: -1929547065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_13
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 445
+        width: 82
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4116b72e9682614a98f85bbab36d865
+      internalID: 1612379453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_14
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 444
+        width: 84
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b53634a0337fcae468bbf01145e59441
+      internalID: 707399206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_15
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 444
+        width: 85
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 438e49e8441030b4d86b95331ac9a7b6
+      internalID: 305041704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_16
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 343
+        width: 86
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33a255b6664ca9a40a3108cd8fd58666
+      internalID: -1884809343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_17
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 342
+        width: 88
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a8aaa564dd3344d9707b0cbb166c4e
+      internalID: -1193737828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_18
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 342
+        width: 89
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5878ae77007baa43abf5666c414f2f0
+      internalID: -453803686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_19
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 341
+        width: 90
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af576d1d4be9c634c863cdb98c68983c
+      internalID: -260513006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_20
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 341
+        width: 90
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c0babf12e9943a4db76d8bdd727b5a7
+      internalID: 1993391836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_21
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 341
+        width: 91
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e167593c8541c314e98bb6c3bdecbc67
+      internalID: 771029027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_22
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 341
+        width: 91
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f39945307bf8c46a3f4501052c1200
+      internalID: -666047554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_23
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 340
+        width: 91
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e92709246c1c4064c945a981a3709df9
+      internalID: -1833031018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_24
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 240
+        width: 91
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa06eecd09679ca4983b9a294528105c
+      internalID: 1270270963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_25
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 240
+        width: 93
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7696e703e13b1c14592aee4bb5b55173
+      internalID: -1225011009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_26
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 240
+        width: 92
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d704f19bcca54774cb3eb0ec134fc04b
+      internalID: -469465608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_27
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 239
+        width: 93
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae97adaa63edfd74b8c92506020b9beb
+      internalID: 841232291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_28
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 239
+        width: 93
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96910af263286c41aa60b7795aa71a9
+      internalID: -1750079691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_29
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 239
+        width: 94
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d153a5bfc9f0ac449bce9e1fecbcb16
+      internalID: -652008759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_30
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 239
+        width: 94
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4bd4485de2a47a4986891b4714dadab
+      internalID: -420247410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_31
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 239
+        width: 95
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2d5368fcba89c4d9f2feee5ba80659
+      internalID: 340662821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_32
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 138
+        width: 95
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 118369e9901cc624db4a4d0ff41e5f26
+      internalID: -580715926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_33
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 138
+        width: 96
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7528df54aa8160345a64617549e1b026
+      internalID: -1852256804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_34
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 138
+        width: 96
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b91b5738614cd0440bd1fa8ca49549de
+      internalID: 505508875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_35
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 138
+        width: 96
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7e47ff84138af499198bf5c50d8e9c
+      internalID: 2198126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_36
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 138
+        width: 96
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3361bf2c15a84224da01d45402e77d80
+      internalID: -353796249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_37
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 142
+        width: 96
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59bda5a5dacf63b46b136b7b8069762c
+      internalID: -1974141958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_38
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 142
+        width: 92
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a2fdb2450147d342b5c648745675d02
+      internalID: -1517548260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_39
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 142
+        width: 82
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8033476a942a5974baee46e0dced580d
+      internalID: 431848195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_40
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 46
+        width: 81
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 160d6f00eb111ca408d7691d7a986cdd
+      internalID: 1106589548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_41
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 49
+        width: 81
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac72dd60e2bde84429f7e1b0bd0d87b0
+      internalID: -1152060723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_42
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 49
+        width: 80
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 461917d62e8093b48be8c57463e6646f
+      internalID: -2118282184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_43
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 51
+        width: 72
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9864860a75310c04cb9d619f7a43a6e0
+      internalID: 1219012073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_44
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 52
+        width: 67
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d36345b533750f43913eed1519783f5
+      internalID: 293933970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_45
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 99
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8556f88e38f5bd41af6e7ffd71145a5
+      internalID: -1570590895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_46
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 52
+        width: 61
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f8ae1b49fead3d4a9cb50c21ff7f768
+      internalID: -1976588038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_47
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 95
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a5acda0cc622354db3ce3959a56f57e
+      internalID: 1992846295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_48
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 95
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b9fa3c52c62ec4285c4e242c1bfe9c
+      internalID: -316551232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_49
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 95
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4e6d0e07296ac547b1aace954c0a8a2
+      internalID: -1073430041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_50
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 66
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f26705778d45aa4d809a3861056b859
+      internalID: 1547173257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_51
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 75
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4471c4fb91d694887f7ba003123d34
+      internalID: -66053359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_52
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 74
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58899d549fd01b64097269b018ad75bd
+      internalID: -1395056727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_53
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 53
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dbc145f013c65443b88f455fbbd40ca
+      internalID: -1603029196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 31-316525_free-2d-explosion-animation-hd-png-download_54
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 56
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ada09747259d8664ea46cfc8d824bd0a
+      internalID: -1732412517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      31-316525_free-2d-explosion-animation-hd-png-download_6: 1170844620
+      31-316525_free-2d-explosion-animation-hd-png-download_7: -1678836898
+      31-316525_free-2d-explosion-animation-hd-png-download_47: 1992846295
+      31-316525_free-2d-explosion-animation-hd-png-download_26: -469465608
+      31-316525_free-2d-explosion-animation-hd-png-download_9: 1363321361
+      31-316525_free-2d-explosion-animation-hd-png-download_40: 1106589548
+      31-316525_free-2d-explosion-animation-hd-png-download_51: -66053359
+      31-316525_free-2d-explosion-animation-hd-png-download_1: 1916950141
+      31-316525_free-2d-explosion-animation-hd-png-download_19: -260513006
+      31-316525_free-2d-explosion-animation-hd-png-download_35: 2198126
+      31-316525_free-2d-explosion-animation-hd-png-download_37: -1974141958
+      31-316525_free-2d-explosion-animation-hd-png-download_44: 293933970
+      31-316525_free-2d-explosion-animation-hd-png-download_52: -1395056727
+      31-316525_free-2d-explosion-animation-hd-png-download_3: -1724577217
+      31-316525_free-2d-explosion-animation-hd-png-download_21: 771029027
+      31-316525_free-2d-explosion-animation-hd-png-download_30: -420247410
+      31-316525_free-2d-explosion-animation-hd-png-download_2: 2132780225
+      31-316525_free-2d-explosion-animation-hd-png-download_39: 431848195
+      31-316525_free-2d-explosion-animation-hd-png-download_29: -652008759
+      31-316525_free-2d-explosion-animation-hd-png-download_33: -1852256804
+      31-316525_free-2d-explosion-animation-hd-png-download_45: -1570590895
+      31-316525_free-2d-explosion-animation-hd-png-download_24: 1270270963
+      31-316525_free-2d-explosion-animation-hd-png-download_4: -648818619
+      31-316525_free-2d-explosion-animation-hd-png-download_38: -1517548260
+      31-316525_free-2d-explosion-animation-hd-png-download_13: 1612379453
+      31-316525_free-2d-explosion-animation-hd-png-download_25: -1225011009
+      31-316525_free-2d-explosion-animation-hd-png-download_43: 1219012073
+      31-316525_free-2d-explosion-animation-hd-png-download_15: 305041704
+      31-316525_free-2d-explosion-animation-hd-png-download_17: -1193737828
+      31-316525_free-2d-explosion-animation-hd-png-download_27: 841232291
+      31-316525_free-2d-explosion-animation-hd-png-download_42: -2118282184
+      31-316525_free-2d-explosion-animation-hd-png-download_49: -1073430041
+      31-316525_free-2d-explosion-animation-hd-png-download_31: 340662821
+      31-316525_free-2d-explosion-animation-hd-png-download_36: -353796249
+      31-316525_free-2d-explosion-animation-hd-png-download_0: 285728913
+      31-316525_free-2d-explosion-animation-hd-png-download_48: -316551232
+      31-316525_free-2d-explosion-animation-hd-png-download_11: 881805514
+      31-316525_free-2d-explosion-animation-hd-png-download_34: 505508875
+      31-316525_free-2d-explosion-animation-hd-png-download_5: 1314955810
+      31-316525_free-2d-explosion-animation-hd-png-download_54: -1732412517
+      31-316525_free-2d-explosion-animation-hd-png-download_10: -1009570422
+      31-316525_free-2d-explosion-animation-hd-png-download_22: -666047554
+      31-316525_free-2d-explosion-animation-hd-png-download_41: -1152060723
+      31-316525_free-2d-explosion-animation-hd-png-download_46: -1976588038
+      31-316525_free-2d-explosion-animation-hd-png-download_8: 554838569
+      31-316525_free-2d-explosion-animation-hd-png-download_32: -580715926
+      31-316525_free-2d-explosion-animation-hd-png-download_20: 1993391836
+      31-316525_free-2d-explosion-animation-hd-png-download_28: -1750079691
+      31-316525_free-2d-explosion-animation-hd-png-download_12: -1929547065
+      31-316525_free-2d-explosion-animation-hd-png-download_16: -1884809343
+      31-316525_free-2d-explosion-animation-hd-png-download_23: -1833031018
+      31-316525_free-2d-explosion-animation-hd-png-download_14: 707399206
+      31-316525_free-2d-explosion-animation-hd-png-download_50: 1547173257
+      31-316525_free-2d-explosion-animation-hd-png-download_53: -1603029196
+      31-316525_free-2d-explosion-animation-hd-png-download_18: -453803686
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

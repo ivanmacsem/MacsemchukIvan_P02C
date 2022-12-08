@@ -119,6 +119,8 @@ public class PlayerTurnCardGameState : CardGameState
                             TauntEnemy.Invoke(false);
                         }
                         Destroy(card.gameObject);
+                        GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
+                        explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         return;
                     }
                 }
@@ -133,6 +135,8 @@ public class PlayerTurnCardGameState : CardGameState
                             TauntPlayer.Invoke(false);
                         }
                         Destroy(card.gameObject);
+                        GameObject explInst = Instantiate(StateMachine.explosionPrefab, card.GetComponent<RectTransform>().parent);
+                        explInst.GetComponent<RectTransform>().anchoredPosition = card.GetComponent<RectTransform>().anchoredPosition + new Vector2(-50, 15);
                         return;
                     }
                 }

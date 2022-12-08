@@ -17,6 +17,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
     private bool drawingOne = true;
     private bool drawingTwo = false;
     public bool firstThree = true;
+    public bool attacking = false;
+    private CardDisplay toHit;
     public CardDisplay card;
     private CardsManager cardsManager;
     private CanvasGroup canvasGroup;
@@ -94,12 +96,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
                 startingSlot = rectTransform.localPosition;
                 rectTransform.SetAsLastSibling();
                 target.SetActive(true);
-                Vector2 parentWorldPos = worldCenter + rectTransform.anchoredPosition;
-                target.gameObject.GetComponent<RectTransform>().anchoredPosition = (eventData.position/canvas.scaleFactor - parentWorldPos);
-                Debug.Log(parentWorldPos);
-                Debug.Log(eventData.position/canvas.scaleFactor);
-                Debug.Log(target.gameObject.GetComponent<RectTransform>().anchoredPosition);
-                Debug.Log(rectTransform.anchoredPosition);
+                Vector2 worldPos = worldCenter + rectTransform.anchoredPosition;
+                target.gameObject.GetComponent<RectTransform>().anchoredPosition = (eventData.position/canvas.scaleFactor - worldPos);
             }
             if(!card.inSlot && rectTransform.parent.GetComponent<PlayerHand>()!=null){
                 playerHand = rectTransform.parent.GetComponent<PlayerHand>();

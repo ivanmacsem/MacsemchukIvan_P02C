@@ -31,6 +31,10 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public bool isShielded = false;
     public bool hasShielded = false;
     public bool isTaunted = false;
+    private RectTransform toAttack;
+    private Vector2 attackDirection;
+    private Vector2 startingPos;
+    public bool attacking = false;
     public void Start()
     {
         nameText.text = card.name;
@@ -66,6 +70,15 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
         else{
             borderImg.color = Color.grey;
+        }
+        if(attacking){
+            Vector2 worldPos = new Vector2(1100, 640) + rectTransform.anchoredPosition;
+            Vector2 toHitWorldPos = new Vector2(1100, 640) + toAttack.anchoredPosition;
+            rectTransform.anchoredPosition += attackDirection*Time.deltaTime*3f;
+            if((toHitWorldPos-worldPos).magnitude < 25){
+                attacking = false;
+                rectTransform.anchoredPosition = startingPos;
+            }
         }
     }
     void OnEnable(){
@@ -147,6 +160,18 @@ public class CardDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 }
             }
         }
+    }
+    public IEnumerator AttackAnimation(RectTransform toHit){
+        attacking = true;
+        toAttack = toHit.GetComponent<RectTransform>();
+        Vector2 worldPos = new Vector2(1100, 640) + rectTransform.anchoredPosition;
+        Vector2 toHitWorldPos = new Vector2(1100, 640) + toAttack.anchoredPosition;
+        attackDirection = toHitWorldPos-worldPos;
+        startingPos = rectTransform.anchoredPosition;
+        do
+        {
+            yield return null;
+        } while ( attacking );
     }
 
     public void TakeDamage(int dmg, bool attacking){

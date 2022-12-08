@@ -14,6 +14,7 @@ public class CardsManager : MonoBehaviour
     public List<Slot> playerSlots = new List<Slot>();
     public List<Slot> enemySlots = new List<Slot>();
     public List<CardDisplay> enemyHand = new List<CardDisplay>();
+    public List<CardDisplay> playerHandCards = new List<CardDisplay>();
     public CardDisplay cardPrefab;
 
     public HorizontalLayoutGroup playerHand;
